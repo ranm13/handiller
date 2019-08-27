@@ -1,14 +1,11 @@
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
 
-
-//check if type is already in DB
 const checkArea = async function(area){
     let query = `SELECT * FROM areas WHERE name = "${area}"`
     return await sequelize.query(query)
 }
 
-//function for type
 const insertArea = async function(area){
     let query =`INSERT INTO areas VALUES (null , "${area}")`
     let result = await sequelize.query(query)
@@ -20,7 +17,6 @@ const insertCity = async function(cityName, areaId){
     let result = await sequelize.query(query)
     return result[0]
 }
-
 
 const insertData = async function(){
     const jsonFile = await require('./real-data-json.json')

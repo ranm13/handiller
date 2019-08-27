@@ -46,17 +46,11 @@ USE handiller_DB;
 --     address VARCHAR(20),
 --     city_id INT, 
 --     description  VARCHAR(300),
-
+--      profession_id INT,
+--      FOREIGN KEY(profession_id) REFERENCES Professions(id),
 --     FOREIGN KEY(city_id) REFERENCES cities(id)
 -- );
 
--- CREATE TABLE Professions_professionals(
---     professional_id INT,
---     profession_id INT,
-
---     FOREIGN KEY(professional_id) REFERENCES Professionals(id),
---     FOREIGN KEY(profession_id) REFERENCES Professions(id)
--- );
 
 -- CREATE TABLE Professionals_areas(
 --     professional_id INT,
