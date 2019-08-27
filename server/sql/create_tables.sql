@@ -8,7 +8,6 @@ USE handiller_DB;
 --     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     name VARCHAR(20)
 -- );
-
 -- CREATE TABLE Areas(
 --     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     name VARCHAR(20)
@@ -39,7 +38,6 @@ USE handiller_DB;
 --     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     Profession VARCHAR(40)
 -- );
-
 -- CREATE TABLE Professionals(
 --     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     first_name VARCHAR(20),

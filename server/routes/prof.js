@@ -2,11 +2,9 @@ const express = require("express");
 const router = express.Router();
 const Sequelize = require('sequelize')
 
-const sequelize = new Sequelize('mysql://root:@localhost/handiller_DB')
-
-router.get("/prof-details/:profId", async function (req, res) {
-    let id = req.params.profId
-    res.send("Works!")
+router.get("prof/details/:profId", function (req, res) {
+    const profId = req.params.profId;
+    
 })
 
 module.exports = router;

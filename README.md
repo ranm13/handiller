@@ -21,7 +21,7 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
     * Req: TBD
     * Res: TBD
 
-* Get: '/client-details/:clientId'
+* Get: client//details/:clientId
     * Req: Number
     * Res: {}
 	    * firstName: String
@@ -32,7 +32,7 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
 	    * address: String
 	    * city: String
 
-* Get: /prof-details/:profId
+* Get: prof/details/:profId
     * Req: Number
     * Res: {}
 	    * profId: Number
@@ -46,12 +46,15 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
 	    * profession: String
 	    * description: String
 
-* Get: /professionals
+* Get: general/professionals
     * Req: EMPTY
     * Res: [String]
 
-* Get: /searchProfs/:professionalsName
-    * Req:  String
+* Get: client/searchProfs/:professionalName/:region
+    * Req:  
+        * PARAMS
+            * professionalName: String
+            * region: String
     * Res: [ {} ]
         * profId: Number
         * firstName: String
@@ -61,6 +64,7 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
         * password: Number
         * address: String
         * city: String
+        * region: String
         * profession: String
         * description: String
 
@@ -123,7 +127,7 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
     * Res: EMPTY
 
 ### *PUT Routes*
-* Put: /update-status/appointmentId
+* Put: /update-status/:appointmentId
     * Req: Number
     * Res: {}
         * status: String
