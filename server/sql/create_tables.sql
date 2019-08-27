@@ -4,21 +4,18 @@ USE handiller_DB;
 
 -- DROP TABLE Appointments, Professionals_areas, Professions_professionals, Professionals, Professions, Clients, Cities_areas, Areas, Cities
 
--- CREATE TABLE Cities(
---     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
---     name VARCHAR(20)
--- );
 -- CREATE TABLE Areas(
 --     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     name VARCHAR(20)
 -- );
 
--- CREATE TABLE Cities_areas(
---     city_id int,
+
+-- CREATE TABLE Cities(
+--     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--     name VARCHAR(20),
 --     area_id int,
 
---     FOREIGN KEY(city_id) REFERENCES Cities(id),
---     FOREIGN KEY(area_id) REFERENCES Areas(id)
+--     FOREIGN KEY(area_id) REFERENCES areas(id)
 -- );
 
 -- CREATE TABLE Clients(
@@ -38,6 +35,7 @@ USE handiller_DB;
 --     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     Profession VARCHAR(40)
 -- );
+
 -- CREATE TABLE Professionals(
 --     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     first_name VARCHAR(20),
@@ -48,17 +46,11 @@ USE handiller_DB;
 --     address VARCHAR(20),
 --     city_id INT, 
 --     description  VARCHAR(300),
-
+--      profession_id INT,
+--      FOREIGN KEY(profession_id) REFERENCES Professions(id),
 --     FOREIGN KEY(city_id) REFERENCES cities(id)
 -- );
 
--- CREATE TABLE Professions_professionals(
---     professional_id INT,
---     profession_id INT,
-
---     FOREIGN KEY(professional_id) REFERENCES Professionals(id),
---     FOREIGN KEY(profession_id) REFERENCES Professions(id)
--- );
 
 -- CREATE TABLE Professionals_areas(
 --     professional_id INT,
@@ -82,17 +74,13 @@ USE handiller_DB;
 --     FOREIGN KEY(client_id) REFERENCES Clients(id)
 -- );
 
--- INSERT INTO Cities (id, name) VALUES(null, "Ramat-Gan");
--- INSERT INTO Cities (id, name) VALUES(null, "Haifa");
--- INSERT INTO Cities (id, name) VALUES(null, "Tel Aviv");
-
 -- INSERT INTO Areas (id, name) VALUES(null, "Gush-Dan");
 -- INSERT INTO Areas (id, name) VALUES(null, "HaTzafon");
 -- INSERT INTO Areas (id, name) VALUES(null, "The West Bank");
 
--- INSERT INTO Cities_areas (city_id, area_id) VALUES(1, 1);
--- INSERT INTO Cities_areas (city_id, area_id) VALUES(2, 2);
--- INSERT INTO Cities_areas (city_id, area_id) VALUES(3, 1);
+-- INSERT INTO Cities (id, name) VALUES(null, "Ramat-Gan", 1);
+-- INSERT INTO Cities (id, name) VALUES(null, "Haifa", 2);
+-- INSERT INTO Cities (id, name) VALUES(null, "Tel Aviv", 1);
 
 -- INSERT INTO Clients (id, first_name, last_name, email, phone, password, address, city_id) 
 -- VALUES(null, "Yossi", "Shamir", "ys@gmail.com", 0524473652, "hdjfhf133", "Hashavim 12", 3 );

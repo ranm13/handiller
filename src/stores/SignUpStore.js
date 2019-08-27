@@ -41,10 +41,10 @@ export class SignUpStore {
             city: this.cityInput
         }
 
-        if(this.isProfessional){
-            userData.areas = areasInput
-            userData.proffession = proffessionInput
-        }
+        // if(this.isProfessional){
+        //     userData.areas = areasInput
+        //     userData.proffession = proffessionInput
+        // }
 
         axios.post('/signup', userData)
     } 
