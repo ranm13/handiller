@@ -31,7 +31,6 @@ CREATE TABLE Clients(
     password VARCHAR(20),
     address VARCHAR(20),
     city_id int, 
-    is_professional BOOLEAN,
 
     FOREIGN KEY(city_id) REFERENCES cities(id)
 );
@@ -50,7 +49,6 @@ CREATE TABLE Professionals(
     password VARCHAR(20),
     address VARCHAR(20),
     city_id INT, 
-    is_professional BOOLEAN,
     description  VARCHAR(300),
 
     FOREIGN KEY(city_id) REFERENCES cities(id)
