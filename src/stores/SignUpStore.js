@@ -20,9 +20,19 @@ export class SignUpStore {
     } 
 
 
-    @action getCitiesAndAreas
+    @action getCities = async () => {
+        let response = await axios.get('/cities')
+        this.citiesList = response.data
+    } 
 
-    @action
+    @action getRegions = async () => {
+        let response = await axios.get('/regions')
+        this.areasList = response.data
+    } 
+
+    @action signUp  = () => {
+        axios.post('/signup', data)
+    } 
 }   
 
 
