@@ -1,68 +1,147 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Handiller
 
-## Available Scripts
+## **Description**
+Application that has users of 2 types: supplier & customer, that can coordinate meeting between them. The customer can search supplier by category.
 
-In the project directory, you can run:
+## **Technologies**
+*	React
+*	MobX
+*	Node.js
+*	Express
+*	MySQL
 
-### `npm start`
+## **Tabels**
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* EMPTY
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## **Routes**
 
-### `npm test`
+### *GET Routes*
+* Get: '/login/:id' 
+    * Req: TBD
+    * Res: TBD
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Get: '/client-details/:clientId'
+    * Req: Number
+    * Res: {}
+	    * firstName: String
+	    * lastName: String
+	    * email: String
+	    * phone: Number
+	    * password: Number
+	    * address: String
+	    * city: String
 
-### `npm run build`
+* Get: /prof-details/:profId
+    * Req: Number
+    * Res: {}
+	    * profId: Number
+	    * firstName: String
+	    * lastName: String
+	    * email: String
+	    * phone: Number
+	    * password: Number
+	    * address: String
+	    * city: String
+	    * profession: String
+	    * description: String
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Get: /professionals
+    * Req: EMPTY
+    * Res: [String]
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+* Get: /searchProfs/:professionalsName
+    * Req:  String
+    * Res: [ {} ]
+        * profId: Number
+        * firstName: String
+        * lastName: String
+        * email: String
+        * phone: Number
+        * password: Number
+        * address: String
+        * city: String
+        * profession: String
+        * description: String
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Get: /appointment/:id?isClient
+    * Req
+        * PARAMS - id: Number
+        * QUERY – isClient: Boolean
+    * Res: {}
+        * appointmentStatus: String
+        * startDate: String (DD/MM/YYYY - HH:MM)
+        * endDate: String (DD/MM/YYYY - HH:MM)
+        * title: String
+        * clientId: Number
+        * profId: Number
+        
+* Get: /appointments/:id
+    * Req
+        * PARAMS - id: Number
+        * QUERY – isClient: Boolean
+    * Res: [ {} ]
+        * appointmentStatus: String
+        * startDate: String (DD/MM/YYYY - HH:MM)
+        * endDate: String (DD/MM/YYYY - HH:MM)
+        * title: String
+        * clientId: Number
+        * profId: Number
 
-### `npm run eject`
+* Get: /cities
+    * Req: EMPTY
+    * Res: [String]
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Get: /citiesByRegion/:region
+    * Req: String
+    * Res: [String]
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Get: /regionByCity/:city
+    * Req: String
+    * Res: String
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### *POST Routes*
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Post: '/signup' 
+    * Req: TBD
+    * Res: TBD
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+* Post: /appointment
+    * Req: 
+        * appointmentStatus: String
+        * startDate: String (DD/MM/YYYY - HH:MM)
+        * endDate: String (DD/MM/YYYY - HH:MM)
+        * title: String
+        * clientId: Number
+        * profId: Number
+    * Res: EMPTY
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### *PUT Routes*
+* Put: /update-status/appointmentId
+    * Req: Number
+    * Res: {}
+        * status: String
+        * startDate: Date
+        * endDate: Date
+        * title: String
+        * clientId: Number
+        * ProfId: Number
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* Put: /settings/:id?isClient
+    * Req
+        * PARAMS - id: Number
+        * QUERY – isClient: Boolean
+        * BODY: (All the body is optional – can be empty)
+            * firstName: String
+            * lastName: String
+            * email: String
+            * phone: Number
+            * password: Number
+            * address: String
+            * city: String
+            * profession: String
+            * description: String
+    * Res: EMPTY
