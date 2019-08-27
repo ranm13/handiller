@@ -5,6 +5,7 @@ import ProfHomePage from './components/Pros/ProfHomePage';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import History from './components/Clients/History';
 import Settings from './components/Clients/Settings';
+import Home from './components/Clients/Home';
 import ClientHomePage from './components/Clients/ClientHomePage';
 
 @observer
@@ -17,7 +18,7 @@ class App extends Component{
       <ProfHomePage />
 
 
-      <Route exact path="/clientHomePage" component={ClientHomePage} />
+      <Route exact path="/home" component={Home} />
       <Route exact path="/history" component={History} />
       <Route exact path="/settings" component={Settings} />
     </div>

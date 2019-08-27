@@ -19,7 +19,7 @@ function NavBar() {
     
     <Paper className="nav-bar">
       <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary" centered>
-        <Tab label="Home" to='/' component={Link} />
+        <Tab label="Home" to='/home' component={Link} />
         <Tab label="History" to='/history' component={Link} />
         <Tab label="Settings" to='/settings' component={Link} />
       </Tabs>
