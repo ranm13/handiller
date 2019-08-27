@@ -3,18 +3,17 @@ const router = express.Router();
 // const Sequelize = require('sequelize')
 // const sequelize = new Sequelize('mysql://root:@localhost/sql_intro')
 
-router.get("/sanity",async function (req, res) {
-    const data = req.body;
-    data.firstName;
-    data.lastName;
-    data.email;
-    data.phone
-    data.pass
-    data.address
-    data.city
-    // const query =`INSERT INTO pokemon_type VALUES (${id}, '${type}')`
-    // let result = await sequelize.query(query)
-    // return result[0]
+router.get("/details/:clientId",async function (req, res) {
+    const clientId = req.params.clientId;
+    //TODO QUERY
+})
+
+router.get("/client/searchProfs/:professionalName/:region", async function (req, res) {
+    const profName = req.params.professionalName;
+    const region = req.params.region;
+
+    //TODO QUERY
+    
 })
 
 module.exports = router;
