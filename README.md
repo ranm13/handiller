@@ -92,6 +92,9 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
     * Req: EMPTY
     * Res: [String]
 
+* Get: /regions
+    * Req: EMPTY
+    * Res: [String]
 
 * Get: /citiesByRegion/:region
     * Req: String
