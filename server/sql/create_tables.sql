@@ -130,3 +130,4 @@ USE handiller_DB;
 -- VALUES(null, "canceld", CURRENT_DATE(), CURRENT_DATE(), "meeting 2", 1, 2 );
 -- INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
 -- VALUES(null, "pending", CURRENT_DATE(), CURRENT_DATE(), "meeting 3", 2, 1 );
+
