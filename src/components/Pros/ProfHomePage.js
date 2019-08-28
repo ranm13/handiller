@@ -8,7 +8,7 @@ class ProfHomePage extends Component {
 
     render() {
         return ( 
-                <div className="ProfHome">
+                <div>
                     <ProfNavBar />          
                 </div>     
         )
