@@ -19,6 +19,7 @@ class RowResults extends Component {
 
     handleOpen = () => {
         this.setState({popUp: true})
+        // add command to getData on prof
     }
 
     handleClose = async () => {
@@ -31,7 +32,7 @@ class RowResults extends Component {
             <TableRow key={result.profId}>
                     <TableCell>{result.firstName} {result.lastName}</TableCell>
                     <TableCell>{result.email}</TableCell>
-                    <TableCell>{result.phone}</TableCell>
+                    <TableCell>0{result.phone}</TableCell>
                     <TableCell>{result.profession}</TableCell>
                     <TableCell>{result.description}</TableCell>
                     <TableCell><Button variant="contained" color="primary" onClick={this.handleOpen}>SELECT</Button></TableCell>

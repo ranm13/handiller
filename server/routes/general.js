@@ -6,7 +6,7 @@ const moment = require('moment')
 Sequelize.DATE.prototype._stringify = function _stringify(date, options) {
     return this._applyTimezone(date, options).format('YYYY-MM-DD HH:mm:ss.SSS');
 };
-const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
+const sequelize = new Sequelize('mysql://root:hoshea1234@localhost/handiller_db')
 
 router.get("/professionals", async function (req, res) {
 
