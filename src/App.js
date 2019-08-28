@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles/App.css';
 import { observer, inject } from 'mobx-react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom'
 import ClientHistory from './components/Clients/ClientHistory';
 import ClientSettings from './components/Clients/ClientSettings';
 import ClientHome from './components/Clients/ClientHome';
@@ -27,12 +27,12 @@ class App extends Component {
           {!(logInStore.isClient || logInStore.isProf)?   
           <Grid container justify="center" alignItems="center" style={{height:"90vh"}} spacing={6}> 
             <Grid item>
-              <Button variant="contained" color="primary" onClick={logInStore.enterToClient}>
+              <Button variant="contained" color="primary" onClick={logInStore.enterToClient} to='/client/home' component={Link}>
                   Client
               </Button>
             </Grid>   
             <Grid item>
-              <Button variant="contained" color="secondary"  onClick={logInStore.enterToProf}>
+              <Button variant="contained" color="secondary"  onClick={logInStore.enterToProf} to='/prof/home' component={Link}>
                   Professional
               </Button>
             </Grid>  

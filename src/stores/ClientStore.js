@@ -48,9 +48,9 @@ export class ClientStore {
         axios.post(`http://localhost:5000/general/appointment`, appointment)
     }
     
-    @action cancelAppointment = async (id) => {
-        // To Un-common:
-        // await axios.put(`http://localhost:5000/update-status/${id}`, {status: "decline"})
+    @action updateAppointment = async (id, data) => {
+        await axios.put(`http://localhost:5000/general/update-status/${id}`, data)
+        this.getRequests()
     }
     
     @action updatePersonalData = async (data) => {

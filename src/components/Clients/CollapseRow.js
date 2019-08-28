@@ -9,7 +9,14 @@ import  Button  from '@material-ui/core/Button';
 @observer
 class CollapseRow extends Component {
     cancelAppointment = () => {
-        // this.props.clientStore.cancelAppointment(this.props.appointmentData.id)
+        const appointmentData = this.props.appointmentData
+        let data = {
+            status: "declined",
+            startDate: appointmentData.startDate,
+            endDate: appointmentData.endDate,
+            title: appointmentData.title
+        }
+        this.props.clientStore.updateAppointment(appointmentData.appointmentId, data)
     }
 
     render() {
