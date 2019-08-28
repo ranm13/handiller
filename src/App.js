@@ -23,7 +23,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Logo/>
-<ClientSignUp />
+{/* <ClientSignUp /> */}
 
           {!(logInStore.isClient || logInStore.isProf)?   
           <div>    
