@@ -12,8 +12,15 @@ router.get("/details/:profId", async function (req, res) {
     ci.id = prof.city_id AND
     prof.profession_id = professions.id`
 
+    let queryRegion = `SELECT DISTINCT areas.name as region
+    FROM professionals AS prof, professionals_areas as ps, areas
+    WHERE ps.professional_id = ${profId} AND areas.id = ps.area_id`
+
     let queryRes = await sequelize.query(query);
     queryRes = queryRes[0][0];
+
+    let queryRegionRes = await sequelize.query(queryRegion);
+    const regions = queryRegionRes[0].map(r => r.region)
 
     const prof = {
         firstName: queryRes.first_name,
@@ -22,6 +29,7 @@ router.get("/details/:profId", async function (req, res) {
         phone: queryRes.phone,
         address: queryRes.address,
         city: queryRes.city_name,
+        regions,
         profession: queryRes.profession,
         description: queryRes.description
     }
