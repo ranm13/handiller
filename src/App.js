@@ -19,7 +19,6 @@ class App extends Component {
           <Logo/>
           <ClientHomePage />
           {/* <ProfHomePage /> */}
-          {/* <Date /> */}
 
           <Route exact path="/home" component={Home} />
           <Route exact path="/history" component={History} />
