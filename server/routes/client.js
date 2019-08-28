@@ -6,9 +6,12 @@ const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
 router.get("/details/:clientId",async function (req, res) {
     const clientId = req.params.clientId;
 
-    let query = `SELECT cl.id, first_name,last_name,email,phone,password,address,ci.name
-    FROM clients AS cl, cities AS ci 
-    WHERE cl.id = ${clientId} AND ci.id = cl.city_id`
+    let query = `SELECT cl.id, first_name,last_name,email,phone,address,ci.name as city_name, areas.name as region
+    FROM clients AS cl, cities AS ci, areas
+    WHERE 
+    cl.id = ${clientId} AND 
+    ci.id = cl.city_id AND 
+    ci.area_id = areas.id`
 
     let queryRes = await sequelize.query(query);
     queryRes = queryRes[0][0];
@@ -18,9 +21,9 @@ router.get("/details/:clientId",async function (req, res) {
         lastName: queryRes.last_name,
         email: queryRes.email,
         phone: queryRes.phone,
-        password: queryRes.phone,
         address: queryRes.address,
-        city: queryRes.city_name
+        city: queryRes.city_name,
+        region: queryRes.region
     }
 
     res.send(client)

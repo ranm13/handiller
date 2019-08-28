@@ -28,21 +28,20 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
 	    * lastName: String
 	    * email: String
 	    * phone: Number
-	    * password: Number
 	    * address: String
 	    * city: String
+        * region: String
 
 * Get: prof/details/:profId
     * Req: Number
     * Res: {}
-	    * profId: Number
 	    * firstName: String
 	    * lastName: String
 	    * email: String
 	    * phone: Number
-	    * password: Number
 	    * address: String
 	    * city: String
+        * regions: [region]
 	    * profession: String
 	    * description: String
 
@@ -63,7 +62,6 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
         * phone: Number
         * address: String
         * city: String
-        * regions: [String]
         * profession: String
         * description: String
 
