@@ -87,16 +87,15 @@ USE handiller_DB;
 -- INSERT INTO Professionals (id, first_name, last_name, email, phone, password, address, city_id, description, profession_id)
 -- VALUES(null, "Shreder", "Harasha", "turtleshater@gmail.com", 0549874362, "krain34", "Mimad X", 1 , "Atem olim li al ha-atzvim tzvim", 5);
 
--- INSERT INTO Professionals_areas (professional_id, area_id) VALUES(9, 3);
--- INSERT INTO Professionals_areas (professional_id, area_id) VALUES(8, 7);
--- INSERT INTO Professionals_areas (professional_id, area_id) VALUES(2, 2);
--- INSERT INTO Professionals_areas (professional_id, area_id) VALUES(3, 1);
--- INSERT INTO Professionals_areas (professional_id, area_id) VALUES(3, 3);
+INSERT INTO Professionals_areas (professional_id, area_id) VALUES(2, 3);
+INSERT INTO Professionals_areas (professional_id, area_id) VALUES(1, 7);
+INSERT INTO Professionals_areas (professional_id, area_id) VALUES(2, 2);
+INSERT INTO Professionals_areas (professional_id, area_id) VALUES(3, 1);
+INSERT INTO Professionals_areas (professional_id, area_id) VALUES(3, 3);
 
--- INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
--- VALUES(null, "approved", CURRENT_DATE(), CURRENT_DATE(), "meeting 1", 2, 3 );
--- INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
--- VALUES(null, "canceld", CURRENT_DATE(), CURRENT_DATE(), "meeting 2", 1, 2 );
--- INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
--- VALUES(null, "pending", CURRENT_DATE(), CURRENT_DATE(), "meeting 3", 2, 1 );
--- GET ALL PROFESSIONS BY REGION
+INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
+VALUES(null, "approved", CURRENT_DATE(), CURRENT_DATE(), "meeting 1", 2, 3 );
+INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
+VALUES(null, "canceld", CURRENT_DATE(), CURRENT_DATE(), "meeting 2", 1, 2 );
+INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
+VALUES(null, "pending", CURRENT_DATE(), CURRENT_DATE(), "meeting 3", 2, 1 );
