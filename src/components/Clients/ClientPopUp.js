@@ -63,7 +63,6 @@ class ClientPopUp extends Component {
         <div className="pop-up-header">Appointment with {this.props.result.firstName}:</div>
         <div className="pop-up-date"><Date handleDateChange={this.handleDateChange} /></div>
         <div className="pop-up-title"><input type="text" className="pop-up-title-input" name="lastname" placeholder="What's wrong..." onChange={this.handleTitleChange} /></div>
-
         <button className="pop-up-button" onClick={this.handleClick}>CONFIRM</button>
         <img className="pop-up-xButton" src={xButton} onClick={this.props.handleClose} />
       </div>
