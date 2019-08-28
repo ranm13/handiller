@@ -25,7 +25,6 @@ class CustomInput extends Component {
     }
 
     render() {
-        this.props.clientStore.getProfessionalsList()
         let professions = this.props.clientStore.professionals
         return (
             <div className="custom-input">
