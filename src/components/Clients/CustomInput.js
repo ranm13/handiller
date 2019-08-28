@@ -5,7 +5,6 @@ import SearchIcon from '@material-ui/icons/Search'
 import RowResults from './ResultsTable'
 import ResultsTable from './ResultsTable'
 
-@inject("listOfProfessionsStore")
 @inject("clientStore")
 @observer
 
@@ -17,24 +16,22 @@ class CustomInput extends Component {
 
     selectProfession = () => {
         this.props.clientStore.selectProfession()
-        this.props.clientStore.searchPros()
     }
 
     selectProfessionEnter = (e) => {
         if (e.key === 'Enter') {
             this.props.clientStore.selectProfession()
-            this.props.clientStore.searchPros()
         }
     }
 
     render() {
-        this.props.listOfProfessionsStore.getProfessionals()
-        let professions = this.props.listOfProfessionsStore.professionals
+        this.props.clientStore.getProfessionalsList()
+        let professions = this.props.clientStore.professionals
         return (
             <div className="custom-input">
                 <spin>Pick A Profession: </spin>
-                <input list="search-input" name="profession" onChange={this.inputHandler} style={{ width: "25vw" }} onKeyDown = {this.selectProfessionEnter}/>
-                <datalist id="search-input">
+                <input list="search-input" name="profession" onChange={this.inputHandler} style={{ width: "25vw", fontFamily: `'Montserrat', sans-serif`, paddingLeft: "5px" }} onKeyDown = {this.selectProfessionEnter}/>
+                <datalist id="search-input" >
                     {professions.map(p => <option>{p}</option>)}
                 </datalist>
                 <IconButton onClick={this.selectProfession} >
