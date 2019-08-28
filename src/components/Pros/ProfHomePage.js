@@ -9,7 +9,7 @@ class ProfHomePage extends Component {
     render() {
         return (
             <div>
-                <CalendarComp />
+              <div><CalendarComp /></div>  
                 <Requests />
             </div>)
     }

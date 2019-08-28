@@ -11,8 +11,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Date />
-        <ClientHomePage />
         <ProfHomePage />
       </div>
     );
