@@ -21,34 +21,16 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
     * Req: TBD
     * Res: TBD
 
-* Get: client//details/:clientId
+* Get: client/details/:clientId
     * Req: Number
     * Res: {}
 	    * firstName: String
 	    * lastName: String
 	    * email: String
 	    * phone: Number
-	    * password: Number
 	    * address: String
 	    * city: String
-
-* Get: prof/details/:profId
-    * Req: Number
-    * Res: {}
-	    * profId: Number
-	    * firstName: String
-	    * lastName: String
-	    * email: String
-	    * phone: Number
-	    * password: Number
-	    * address: String
-	    * city: String
-	    * profession: String
-	    * description: String
-
-* Get: general/professionals
-    * Req: EMPTY
-    * Res: [String]
+        * region: String
 
 * Get: client/searchProfs/:professionalName/:region
     * Req:  
@@ -61,66 +43,62 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
         * lastName: String
         * email: String
         * phone: Number
-        * password: Number
         * address: String
         * city: String
-        * region: String
         * profession: String
-        * description: String
+        * description: Stringr
 
-* Get: /appointment/:id?isClient
-    * Req
-        * PARAMS - id: Number
-        * QUERY – isClient: Boolean
+* Get: prof/details/:profId
+    * Req: Number
     * Res: {}
-        * appointmentStatus: String
-        * startDate: String (DD/MM/YYYY - HH:MM)
-        * endDate: String (DD/MM/YYYY - HH:MM)
-        * title: String
-        * clientId: Number
-        * profId: Number
+	    * firstName: String
+	    * lastName: String
+	    * email: String
+	    * phone: Number
+	    * address: String
+	    * city: String
+        * regions: [region]
+	    * profession: String
+	    * description: String
         
-* Get: /appointments/:id
+* Get: general/appointments/:id
     * Req
         * PARAMS - id: Number
         * QUERY – isClient: Boolean
     * Res: [ {} ]
-        * appointmentStatus: String
-        * startDate: String (DD/MM/YYYY - HH:MM)
-        * endDate: String (DD/MM/YYYY - HH:MM)
+        * appointmentId: Number
+        * appointmentStatus: String (Pending, Approve, Declined, Completed)
+        * startDate: Date
+        * endDate: Date
         * title: String
         * clientId: Number
         * profId: Number
 
-* Get: /cities
+* Get: general/cities
     * Req: EMPTY
     * Res: [String]
 
-* Get: /regions
+* Get: general/regions
     * Req: EMPTY
     * Res: [String]
 
-* Get: /citiesByRegion/:region
-    * Req: String
+* Get: general/professionals
+    * Req: EMPTY
     * Res: [String]
-
-* Get: /regionByCity/:city
-    * Req: String
-    * Res: String
 
 
 ### *POST Routes*
 
-* Post: '/signup' 
+* Post: /signup
     * Req: TBD
     * Res: TBD
 
 
 * Post: /appointment
     * Req: 
-        * appointmentStatus: String
-        * startDate: String (DD/MM/YYYY - HH:MM)
-        * endDate: String (DD/MM/YYYY - HH:MM)
+        * appointmentStatus: String (Pending, Approve, Declined, Completed)
+        * startDate: Date
+        * endDate: Date
         * title: String
         * clientId: Number
         * profId: Number
@@ -128,14 +106,14 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
 
 ### *PUT Routes*
 * Put: /update-status/:appointmentId
-    * Req: Number
-    * Res: {}
-        * status: String
-        * startDate: Date
-        * endDate: Date
-        * title: String
-        * clientId: Number
-        * ProfId: Number
+    * Req: 
+        * PARAMS - appointmentId: Number
+        * BODY: (All the fields required)
+            * status: String
+            * startDate: Date
+            * endDate: Date
+            * title: String
+    * Res: EMPTY
 
 * Put: /settings/:id?isClient
     * Req
@@ -151,4 +129,5 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
             * city: String
             * profession: String
             * description: String
+            * regions: [region]
     * Res: EMPTY
