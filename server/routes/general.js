@@ -40,8 +40,15 @@ router.get("/cities", async function (req, res) {
     res.send(cities)
 })
 
-router.get("/regions", function (req, res) {
-    
+router.get("/regions", async function (req, res) {
+    let query = `SELECT name FROM areas`
+
+    let queryRes = await sequelize.query(query);
+    queryRes = queryRes[0];
+
+    const areas = queryRes.map(a=> a.name)
+
+    res.send(areas)
 })
 
 router.get("/citiesByRegion/:region", function (req, res) {
