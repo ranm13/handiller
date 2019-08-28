@@ -27,23 +27,38 @@ router.get("/details/:clientId",async function (req, res) {
 })
 
 router.get("/searchProfs/:professionalName/:region", async function (req, res) {
+
     const profName = req.params.professionalName;
     const region = req.params.region;
 
-    //Take the region id
-    let query = `SELECT areas.id as areas_id
-    FROM areas
-    WHERE areas.name="${region}"`
+    let query = `SELECT DISTINCT p.id, p.first_name, p.last_name, p.email, p.phone, p.address, cities.name as city,prof.profession, p.description, prof_area.area_id
+    FROM areas, cities, professions as prof, professionals_areas as prof_area, professionals as p
+    WHERE
+    areas.name="${region}" AND
+    prof.Profession="${profName}" AND
+    p.profession_id = prof.id AND
+    prof_area.area_id = areas.id AND
+    prof_area.professional_id = p.id AND
+    p.city_id = cities.id AND
+    prof_area.professional_id = p.id`
 
-    let queryRes = await sequelize.query(queryRegion);
-    const object = queryRes[0][0];
 
-    //Take the proffesionId
-    console.log(regionNum)
+    let queryRes = await sequelize.query(query);
+    const professionals = queryRes[0].map( p => {
+        return {
+            profId: p.id,
+            firstName: p.first_name,
+            lastName: p.last_name,
+            email: p.email,
+            phone: p.phone,
+            address: p.address,
+            city: p.city,
+            profession: p.profession,
+            description: p.description
+        }
+    });
 
-    res.send(object)
-    //TODO QUERY
-    
+    res.send(professionals)
 })
 
 module.exports = router;
