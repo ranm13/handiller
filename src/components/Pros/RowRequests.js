@@ -9,7 +9,7 @@ import moment from "moment"
 class RowRequests extends Component {
     handleOpen = (e) => {
         let appointmentData = this.props.appointmentData
-        let status = (e.currentTarget.outerText === "DECLINE"? "canceld"
+        let status = (e.currentTarget.outerText === "DECLINE"? "declined"
         :e.currentTarget.outerText === "APPROVE"?  "approved" :null)
         let data = {
             status: status,

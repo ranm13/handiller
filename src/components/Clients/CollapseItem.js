@@ -31,7 +31,7 @@ class CollapseItem extends Component {
                     {clientStore.clientRequests.length === 0 ? null 
                                         : clientStore.clientRequests
                                             .filter(i => i.appointmentStatus === text.toLowerCase())
-                                            .map(i => <CollapseRow key={i.id} text={this.props.text} appointmentData={i} />)}
+                                            .map(i => <CollapseRow key={i.appointmentId} text={this.props.text} appointmentData={i} />)}
                 </List>
             </Collapse>
         </div>)
