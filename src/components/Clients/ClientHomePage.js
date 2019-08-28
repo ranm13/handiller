@@ -1,11 +1,16 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { observer } from 'mobx-react'
+import NavBar from '../General/NavBar';
 
+
+@observer
 class ClientHomePage extends Component {
     render() {
-        return (
-        <div>
-    
-        </div>)
+        return ( 
+                <div className="clientHomePage">
+                    <NavBar />          
+                </div>     
+        )
     }
 }
 export default ClientHomePage
