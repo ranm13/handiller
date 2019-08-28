@@ -6,23 +6,23 @@ import { Paper, Grid, Button, Typography, TextField } from '@material-ui/core'
 class ProfSettings extends Component {
     render() {
         return (
-            <div className="settings">
-                <Grid container spacing={1} container direction="column" justify="center" alignItems="center"> <p>Update Sattings:</p></Grid>
-                <Paper><Grid container spacing={1} container direction="column" justify="center" alignItems="center">
-                    <Grid> <Typography variant="h5">First Name: this.props.FirstName  <TextField id="standard-name" label="New First Name" margin="normal" /></Typography></Grid>
-                    <Grid> <Typography variant="h5">Last Name: this.props.LastName</Typography> </Grid>
-                    <Grid> <Typography variant="h5">Email: this.props.Email</Typography> </Grid>
-                    <Grid> <Typography variant="h5">Phone: this.props.Phone</Typography> </Grid>
-                    <Grid> <Typography variant="h5">Password: this.props.Password</Typography> </Grid>
-                    <Grid> <Typography variant="h5">City: this.props.City</Typography> </Grid>
-                    <Grid> <Typography variant="h5">Profession: this.props.Profession</Typography> </Grid>
-                    <Grid> <Typography variant="h5">Description: this.props.Description</Typography> </Grid>
+            <Paper>
+                <Grid container spacing={1} container direction="column" alignItems="center" justify="center">
+                    <Grid item><Typography variant="h4">Update Personal Data</Typography></Grid>
+                    <Grid item> <Typography variant="h5">First Name: <TextField  label="New First Name"  /></Typography></Grid>
+                    <Grid item> <Typography variant="h5">Last Name: </Typography> </Grid>
+                    <Grid item> <Typography variant="h5">Email: </Typography> </Grid>
+                    <Grid item> <Typography variant="h5">Phone: </Typography> </Grid>
+                    <Grid item> <Typography variant="h5">Password: </Typography> </Grid>
+                    <Grid item> <Typography variant="h5">City: </Typography> </Grid>
+                    <Grid item> <Typography variant="h5">Profession: </Typography> </Grid>
+                    <Grid item> <Typography variant="h5">Description: </Typography> </Grid>
                     <Button variant="contained" color="primary" onClick={this.handleOpen}>APPROVE Changes</Button>
-                </Grid> </Paper>
-            </div>
+                </Grid>        
+            </Paper>
+                
         )
 
     }
 }
 export default ProfSettings
-{/* <Grid container spacing={1} container direction="row" justify="center" alignItems="center"> <p>Update Sattings:</p></Grid> */ }
