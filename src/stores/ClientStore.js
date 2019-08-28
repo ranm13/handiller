@@ -1,5 +1,4 @@
 import { observable, computed, action } from 'mobx'
-import { inject } from 'mobx-react';
 const axios = require('axios')
 
 export class ClientStore {

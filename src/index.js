@@ -8,12 +8,14 @@ import { ProfEventsStore } from './stores/ProfEventsStore';
 import { ListOfProfessionsStore } from './stores/ListOfProfessionsStore';
 import { ClientStore } from './stores/ClientStore';
 import { Provider } from 'mobx-react';
+import { HistoryStore } from './stores/HistoryStore';
 const signUpStore = new SignUpStore()
 const profEventsStore = new ProfEventsStore()
 const listOfProfessionsStore = new ListOfProfessionsStore()
 const clientStore = new ClientStore()
+const historyStore = new HistoryStore()
 
-const stores = {signUpStore, listOfProfessionsStore, profEventsStore, clientStore}
+const stores = {signUpStore, listOfProfessionsStore, clientStore, profEventsStore, historyStore}
 
 ReactDOM.render(<Provider {... stores}>
                     <App />

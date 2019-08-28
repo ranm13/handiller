@@ -18,8 +18,8 @@ class App extends Component {
         <div className="App">
           <Logo/>
           <ClientHomePage />
-          <ProfHomePage />
-
+          {/* <ProfHomePage /> */}
+          {/* <Date /> */}
 
           <Route exact path="/home" component={Home} />
           <Route exact path="/history" component={History} />
