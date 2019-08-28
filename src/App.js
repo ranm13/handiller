@@ -8,6 +8,7 @@ import ClientHome from './components/Clients/ClientHome';
 import Logo from './components/General/Logo';
 import ClientHomePage from './components/Clients/ClientHomePage';
 import ProfHomePage from './components/Pros/ProfHomePage';
+import ProfHome from './components/Pros/ProfHome';
 import Button from '@material-ui/core/Button';
 import ProfSettings from './components/Pros/ProfSettings';
 
@@ -33,7 +34,7 @@ class App extends Component {
           </div>  : null}
 
           {logInStore.isClient? <ClientHomePage />:
-          logInStore.isProf? <ProfHomePage />
+          logInStore.isProf? <ProfHome />
           : null}
 
           <Route exact path="/client/home" component={ClientHome} />
