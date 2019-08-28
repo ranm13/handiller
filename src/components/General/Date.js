@@ -23,7 +23,7 @@ class Date extends Component {
       <form noValidate>
         <TextField
           id="datetime-local"
-          label="Choose a comfortable date"
+          // label="Choose a comfortable date"
           type="datetime-local"
           onChange={this.handleDateChange}
           value={this.state.value}

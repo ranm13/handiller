@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
+const sequelize = new Sequelize('mysql://root:hoshea1234@localhost/handiller_db')
 
 const checkArea = async function(area){
     let query = `SELECT * FROM areas WHERE name = "${area}"`
@@ -45,5 +45,5 @@ const insertProfessions = async function(){
     }
 }
 
-// insertData()
-// insertProfessions()
+insertData()
+insertProfessions()
