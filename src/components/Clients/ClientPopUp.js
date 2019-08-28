@@ -7,7 +7,7 @@ import Date from '../General/Date'
 import { observer, inject } from 'mobx-react'
 const moment = require('moment')
 
-@inject('ClientStore')
+@inject('clientStore')
 @observer
 class ClientPopUp extends Component {
   constructor(props) {

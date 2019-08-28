@@ -3,10 +3,9 @@ import './styles/App.css';
 import { observer } from 'mobx-react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Date from './components/General/Date';
-import History from './components/Clients/History';
-import Settings from './components/Clients/Settings';
-import Home from './components/Clients/Home';
-import ClientHomePage from './components/Clients/ClientHomePage';
+import ClientHistory from './components/Clients/ClientHistory';
+import ClientSettings from './components/Clients/ClientSettings';
+import ClientHome from './components/Clients/ClientHome';
 import Logo from './components/General/Logo';
 import ClientHomePage from './components/Clients/ClientHomePage';
 import ProfHomePage from './components/Pros/ProfHomePage';
@@ -20,12 +19,12 @@ class App extends Component {
         <div className="App">
           <Logo/>
           {/* <Date /> */}
-          {/* <ClientHomePage /> */}
-          <ProfHomePage />
+          <ClientHomePage />
+          {/* <ProfHomePage /> */}
 
-          {/* <Route exact path="/home" component={Home} />
-          <Route exact path="/history" component={History} />
-          <Route exact path="/settings" component={Settings} /> */}
+          <Route exact path="/home" component={ClientHome} />
+          <Route exact path="/history" component={ClientHistory} />
+          <Route exact path="/settings" component={ClientSettings} />
         </div>
       </Router>
     );

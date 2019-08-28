@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Requests from './Requests'
 import { observer } from 'mobx-react'
 import CalendarComp from '../General/CalendarComp';
-import NavBar from './Prof-NavBar';
+import NavBar from './ProfNavBar';
 import {Grid} from '@material-ui/core'
 import ProfSettings from './ProfSettings';
 
@@ -14,10 +14,10 @@ class ProfHomePage extends Component {
             <div>
                 <NavBar />
 
-                <ProfSettings />
-                {/* <Grid container spacing={1} >
+                {/* <ProfSettings /> */}
+                <Grid container spacing={1} >
                     <Grid item xs={9}  >  <CalendarComp /> </Grid>
-                    <Grid item xs={3}> <Requests /> </Grid> </Grid> */}
+                    <Grid item xs={3}> <Requests /> </Grid> </Grid>
             </div>)
     }
 }
