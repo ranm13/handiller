@@ -8,6 +8,7 @@ import History from './components/Clients/History';
 import Settings from './components/Clients/Settings';
 import Home from './components/Clients/Home';
 import ClientHomePage from './components/Clients/ClientHomePage';
+import Logo from './components/General/Logo';
 
 @observer
 class App extends Component {
@@ -15,12 +16,12 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          <Logo/>
           <ClientHomePage />
           {/* <ProfHomePage /> */}
-
           {/* <Date /> */}
 
-          <Route exact path="/home" component={ClientHomePage} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/history" component={History} />
           <Route exact path="/settings" component={Settings} />
         </div>

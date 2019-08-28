@@ -5,16 +5,16 @@ import {ProfEventStore} from './ProfEventStore'
 
 export class ProfEventsStore {
     @observable events = [
-        {
-          start: new Date(moment("2019-08-14T12:30" )),
-          end: new Date(moment(moment("2019-08-14T12:30").add(5, "hours"))),
-          title: "OUR STUFF"
-        },
-        {
-            start: new Date(),
-            end: new Date(moment().add(0, "days")),
-            title: "Some title"
-        }
+        // {
+        //   start: new Date(moment("2019-08-14T12:30" )),
+        //   end: new Date(moment(moment("2019-08-14T12:30").add(5, "hours"))),
+        //   title: "OUR STUFF"
+        // },
+        // {
+        //     start: new Date(),
+        //     end: new Date(moment().add(0, "days")),
+        //     title: "Some title"
+        // }
     ]
     @action addEvent = (title, start) => {
         start = new Date(moment(start))

@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import { Paper } from '@material-ui/core'
+import { Paper, TableCell } from '@material-ui/core'
 import RowResults from './RowResults';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 
 @inject("clientStore")
@@ -11,13 +17,26 @@ class ResultsTable extends Component {
 
     render() {
         let searchResults = this.props.clientStore.searchResults
+        let searchResultsHeaders = ["Name", "Email", "Phone", "Region", "Profession", "Description", ""]
         console.log(this.props.clientStore)
         return (
-            <Paper>
-                <div className="row-results">
-                    {searchResults ? searchResults.map(r => <RowResults result={r} />) : null}
-                </div>
-            </Paper>
+            <div>
+                {searchResults ?
+                    <Paper>
+                        < Table >
+                            <TableHead>
+                                <TableRow>
+                                    {searchResultsHeaders.map(h => <TableCell style={{fontSize: "1em"}}>{h}</TableCell>)}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {searchResults.map(r => <RowResults result={r} />)}
+                            </TableBody>
+                        </Table >
+                    </Paper >
+                    : null
+                }
+            </div>
         )
     }
 }

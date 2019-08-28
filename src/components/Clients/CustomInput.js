@@ -32,16 +32,14 @@ class CustomInput extends Component {
         let professions = this.props.listOfProfessionsStore.professionals
         return (
             <div className="custom-input">
-                <div>Pick A Profession: </div>
-                <input list="search-input" name="profession" onChange={this.inputHandler} style={{ width: "20vw" }} onKeyDown = {this.selectProfessionEnter}/>
+                <spin>Pick A Profession: </spin>
+                <input list="search-input" name="profession" onChange={this.inputHandler} style={{ width: "25vw" }} onKeyDown = {this.selectProfessionEnter}/>
                 <datalist id="search-input">
                     {professions.map(p => <option>{p}</option>)}
                 </datalist>
                 <IconButton onClick={this.selectProfession} >
                     <SearchIcon />
                 </IconButton>
-                
-
             </div>
         )
 

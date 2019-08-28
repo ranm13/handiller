@@ -9,8 +9,8 @@ class ProfHomePage extends Component {
     render() {
         return (
             <div>
-                <CalendarComp />
-                <Requests />
+                {/* <CalendarComp /> */}
+                {/* <Requests /> */}
             </div>)
     }
 }
