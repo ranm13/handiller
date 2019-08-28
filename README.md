@@ -21,7 +21,7 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
     * Req: TBD
     * Res: TBD
 
-* Get: client//details/:clientId
+* Get: client/details/:clientId
     * Req: Number
     * Res: {}
 	    * firstName: String
@@ -61,10 +61,9 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
         * lastName: String
         * email: String
         * phone: Number
-        * password: Number
         * address: String
         * city: String
-        * region: String
+        * regions: [String]
         * profession: String
         * description: String
 
