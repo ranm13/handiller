@@ -29,8 +29,15 @@ router.get("/appointments/:id", function (req, res) {
     
 })
 
-router.get("/cities", function (req, res) {
-    
+router.get("/cities", async function (req, res) {
+    let query = `SELECT name FROM cities`
+
+    let queryRes = await sequelize.query(query);
+    queryRes = queryRes[0];
+
+    const cities = queryRes.map(c=> c.name)
+
+    res.send(cities)
 })
 
 router.get("/regions", function (req, res) {
