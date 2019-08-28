@@ -3,7 +3,7 @@ import './styles/App.css';
 import { observer } from 'mobx-react'
 import ProfHomePage from './components/Pros/ProfHomePage';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Date from './components/Date';
+import Date from './components/General/Date';
 import History from './components/Clients/History';
 import Settings from './components/Clients/Settings';
 import Home from './components/Clients/Home';

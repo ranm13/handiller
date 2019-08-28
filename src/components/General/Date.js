@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { InputBase, Paper, IconButton } from '@material-ui/core'
-import AddCircleIcon from '@material-ui/icons/AddCircle'; 
 
-class DateAndTimePickers extends Component {
+class Date extends Component {
   constructor(props) {
     super(props)
     this.state = {
       value: "2019-08-28T10:30"
     }
   }
-  handleChange = (e) => {
-    this.setState({
+
+  handleDateChange = async (e) => {
+    await this.setState({
       value: e.target.value
     })
-}
-selectDate = () => {
-  console.log(this.state.value)
-}
+    // await this.props.handleDateChange(e.target.value)
+    this.props.handleDateChange(this.state.value)
+
+  }
 
   render() {
     return (
@@ -27,20 +25,20 @@ selectDate = () => {
           id="datetime-local"
           label="Choose a comfortable date"
           type="datetime-local"
-          onChange={this.handleChange}
+          onChange={this.handleDateChange}
           value={this.state.value}
           InputLabelProps={{
             shrink: true,
           }}
         />
-        <IconButton onClick={this.selectDate} >
-                    <AddCircleIcon />
-                </IconButton>
+        {/* <IconButton onClick={this.selectDate} >
+          <AddCircleIcon />
+        </IconButton> */}
       </form>
     );
   }
 }
-export default DateAndTimePickers;
+export default Date;
 
 
 
