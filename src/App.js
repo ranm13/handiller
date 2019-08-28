@@ -7,21 +7,23 @@ import ClientSettings from './components/Clients/ClientSettings';
 import ClientHome from './components/Clients/ClientHome';
 import Logo from './components/General/Logo';
 import ClientHomePage from './components/Clients/ClientHomePage';
+import ClientSignUp from './components/Signup/ClientSignUp';
 import ProfHomePage from './components/Pros/ProfHomePage';
 import Button from '@material-ui/core/Button';
 import ProfSettings from './components/Pros/ProfSettings';
 import { Grid } from '@material-ui/core';
 
 @inject('logInStore')
+
 @observer
 class App extends Component {
-  
   render() {
     const logInStore = this.props.logInStore
     return (
       <Router>
         <div className="App">
           <Logo/>
+
           {!(logInStore.isClient || logInStore.isProf)?   
           <Grid container justify="center" alignItems="center" style={{height:"90vh"}} spacing={6}> 
             <Grid item>

@@ -37,7 +37,7 @@ router.get("/appointments/:id", async function (req, res) {
     ${fieldToSearch}=${id} AND
     clients.id = appointments.client_id AND
     professionals.id = appointments.professional_id AND
-    professions.id = professionals.professional_id
+    professions.id = professionals.profession_id
     `
 
     let queryRes = await sequelize.query(query);
@@ -85,8 +85,8 @@ router.get("/regions", async function (req, res) {
 
 router.post("/appointment", async function (req, res) {
     const data = req.body;
-    const startDate = moment(new Date(data.startDate)).subtract(3, "hours").format("YYYY-MM-DD HH:mm:ss.SSS")
-    const endDate = moment(new Date(data.endDate)).subtract(3, "hours").format("YYYY-MM-DD HH:mm:ss.SSS")
+    const startDate = moment(new Date(data.startDate)).format("YYYY-MM-DD HH:mm:ss.SSS");
+    const endDate = moment(new Date(data.endDate)).format("YYYY-MM-DD HH:mm:ss.SSS")
     let query = `INSERT INTO Appointments VALUES ( null, "pending", '${startDate}', '${endDate}', '${data.title}', ${data.profId}, ${data.clientId});`
     await sequelize.query(query)
     res.end()
