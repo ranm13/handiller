@@ -28,10 +28,9 @@ class CollapseItem extends Component {
                 </ListItem>
             <Collapse in={historyStore[this.props.toObserve]} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                    {/* {[0, 1, 2 ,3].map(i => <CollapseRow key={i} text={this.props.text}/>)} */}
                     {clientStore.clientRequests.length === 0 ? null 
                                         : clientStore.clientRequests
-                                            .filter(i => {console.log(i.appointmentStatus);return i.appointmentStatus === text.toLowerCase()})
+                                            .filter(i => i.appointmentStatus === text.toLowerCase())
                                             .map(i => <CollapseRow key={i.id} text={this.props.text} appointmentData={i} />)}
                 </List>
             </Collapse>

@@ -24,7 +24,3 @@ class History extends Component {
     }
 }
 export default History
-
-{/* <ListItemIcon>
-<InboxIcon />
-</ListItemIcon> */}
