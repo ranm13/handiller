@@ -4,11 +4,11 @@ import { Provider } from 'mobx-react';
 import './styles/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { SignUpStore } from './stores/SignUpStore';
 import { ProfEventsStore } from './stores/ProfEventsStore';
 import { ClientStore } from './stores/ClientStore';
 import { HistoryStore } from './stores/HistoryStore';
 import { LogInStore } from './stores/LogInStore';
+import { SignUpStore } from './stores/SignUpStore';
 
 const signUpStore = new SignUpStore()
 const logInStore = new LogInStore()

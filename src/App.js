@@ -7,6 +7,7 @@ import ClientSettings from './components/Clients/ClientSettings';
 import ClientHome from './components/Clients/ClientHome';
 import Logo from './components/General/Logo';
 import ClientHomePage from './components/Clients/ClientHomePage';
+import ClientSignUp from './components/Signup/ClientSignUp';
 import ProfHomePage from './components/Pros/ProfHomePage';
 import ProfHome from './components/Pros/ProfHome';
 import Button from '@material-ui/core/Button';
@@ -22,6 +23,7 @@ class App extends Component {
       <Router>
         <div className="App">
           <Logo/>
+<ClientSignUp />
 
           {!(logInStore.isClient || logInStore.isProf)?   
           <div>    
@@ -32,7 +34,6 @@ class App extends Component {
                 Professional
             </Button>
           </div>  : null}
-
           {logInStore.isClient? <ClientHomePage />:
           logInStore.isProf? <ProfHome />
           : null}
