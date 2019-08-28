@@ -6,19 +6,11 @@ import NavBar from '../General/NavBar';
 @observer
 class ClientHomePage extends Component {
     render() {
-        return (
-            
-           
+        return ( 
                 <div className="clientHomePage">
-                    <NavBar />
-
-
-
-                   
-                </div>
-        
+                    <NavBar />          
+                </div>     
         )
-
     }
 }
 export default ClientHomePage

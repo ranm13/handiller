@@ -1,33 +1,39 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Lexend+Peta|Montserrat|Raleway&display=swap');
+
+/* .clientHomePage{
+  font-family: 'Montserrat', sans-serif;
+} */
+
+.logo{
+  position: absolute;
+  left: 0.8vw;
+  top: 1vw;
+  height:1vh;
+  width: 3vw;
+}
+
+.h{
+  position: absolute;
+  font-family: 'Lexend Peta', sans-serif;
+  font-size: 1.3em;
+  animation: H 6s linear infinite;
+}
+
+.andiler{
+  position: absolute;
+  font-family: 'Lexend Peta', sans-serif;
+  left: 1em;
+  font-size: 1.3em;
+}
+
+@keyframes H {
+  0%{transform: rotate(0deg);}
+  40%{transform: rotate(180deg);}
+  70%{transform: rotate(180deg);}
+  100%{transform: rotate(180deg);}
+}
+
+.custom-input{
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  font-family: 'Montserrat', sans-serif;
 }
