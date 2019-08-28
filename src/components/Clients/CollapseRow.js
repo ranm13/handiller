@@ -15,7 +15,6 @@ class CollapseRow extends Component {
     render() {
         let text = this.props.text
         let appointmentData = this.props.appointmentData;
-        console.log(appointmentData)
         const startDate = moment(appointmentData.startDate).format('L');
         return (
             <ListItem>
