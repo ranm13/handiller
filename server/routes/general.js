@@ -7,6 +7,7 @@ Sequelize.DATE.prototype._stringify = function _stringify(date, options) {
     return this._applyTimezone(date, options).format('YYYY-MM-DD HH:mm:ss.SSS');
 };
 const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
+// const sequelize = new Sequelize('mysql://root:hoshea1234@localhost/handiller_db')
 
 router.get("/professionals", async function (req, res) {
 
@@ -30,7 +31,14 @@ router.get("/appointments/:id", async function (req, res) {
         fieldToSearch = "appointments.client_id"
 
 
-    let query = `SELECT DISTINCT * FROM appointments WHERE ${fieldToSearch}=${id}`
+    let query = `SELECT DISTINCT appointments.id, appointments.status, appointments.start_date, appointments.end_date, appointments.title, clients.first_name as client_name, professionals.first_name as prof_name, professions.Profession as profession
+    FROM appointments, clients, professionals, professions
+    WHERE 
+    ${fieldToSearch}=${id} AND
+    clients.id = appointments.client_id AND
+    professionals.id = appointments.professional_id AND
+    professions.id = professionals.professional_id
+    `
 
     let queryRes = await sequelize.query(query);
 
@@ -42,7 +50,10 @@ router.get("/appointments/:id", async function (req, res) {
             endDate: appoint.end_date,
             title: appoint.title,
             clientId: appoint.client_id,
-            profId: appoint.professional_id
+            profId: appoint.professional_id,
+            profName: appoint.prof_name,
+            clientName: appoint.client_name,
+            profession: appoint.profession
         }
     })
 

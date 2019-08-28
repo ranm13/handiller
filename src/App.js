@@ -13,9 +13,9 @@ import Button from '@material-ui/core/Button';
 import ProfSettings from './components/Pros/ProfSettings';
 
 @inject('logInStore')
-
 @observer
 class App extends Component {
+  
   render() {
     const logInStore = this.props.logInStore
     return (
