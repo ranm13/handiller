@@ -9,9 +9,6 @@ const localizer = momentLocalizer(moment);
 @inject("profEventsStore")
 class CalendarComp extends Component {
 
-  popUp = (e) => <SimpleModal />
-  // console.log(e.id)
-
   render() {
 
     let props = this.props.profEventsStore
@@ -29,7 +26,7 @@ class CalendarComp extends Component {
           defaultView="week"
           step={60}
           localizer={localizer}
-          style={{ height: "100vh" }}
+          style={{ height: "88vh" }}
         />
       </div>
     );
