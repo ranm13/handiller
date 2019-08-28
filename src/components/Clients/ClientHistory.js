@@ -11,7 +11,7 @@ class History extends Component {
                 <CollapseItem text="Approved" toObserve="approvedOpen"/>
                 <CollapseItem text="Declined" toObserve="decliendOpen"/>
                 <CollapseItem text="Completed" toObserve="completedOpen"/>
-          </List>
+            </List>
         )
 
     }
