@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import { InputBase, Paper, IconButton } from '@material-ui/core'
+import { IconButton } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
-import RowResults from './ResultsTable'
-import ResultsTable from './ResultsTable'
 
 @inject("clientStore")
 @observer

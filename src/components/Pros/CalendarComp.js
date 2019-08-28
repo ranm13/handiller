@@ -1,33 +1,32 @@
 import React, { Component } from "react";
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import { observer, inject } from 'mobx-react'
-import moment from "moment";
 import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-const localizer = momentLocalizer(moment);
+import moment from "moment";
 
-@inject("profEventsStore")
-class CalendarComp extends Component {
+@inject( "professionalStore")
+
+@observer
+class CalendarComp extends Component { 
+
+  async componentDidMount() {
+    // this.props.profEventsStore.getAppointments(2)
+    await this.props.professionalStore.getPersonalData(2)
+  }
 
   render() {
-
-    let props = this.props.profEventsStore
-
-    props.addEvent("ran the king ran the king ran the king ran the king", "2019-08-30T14:30")
-    props.addEvent("Ran the boss", "2019-08-27T12:30")
-    props.onClick()
+    const localizer = momentLocalizer(moment);
     return (
       <div className="Calendar">
-
         <Calendar
-          events={this.props.profEventsStore.events}
+          events={this.props.professionalStore.allRequests}
           onSelectEvent={this.popUp}
           defaultDate={new Date()}
-          defaultView="week"
+          defaultView="month"
           step={60}
           localizer={localizer}
-          style={{ height: "88vh" }}
-        />
+          style={{ height: "88vh" }}/>
       </div>
     );
   }
