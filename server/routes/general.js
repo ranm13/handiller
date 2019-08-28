@@ -1,8 +1,18 @@
 const express = require("express");
 const router = express.Router();
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
 
-router.get("/professionals", function (req, res) {
-    
+router.get("/professionals", async function (req, res) {
+
+    let query = `SELECT Profession FROM professions`
+
+    let queryRes = await sequelize.query(query);
+    queryRes = queryRes[0];
+
+    const professions = queryRes.map(p=> p.Profession)
+
+    res.send(professions)
 })
 
 router.get("/appointment/:id?isClient", function (req, res) {
