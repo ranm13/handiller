@@ -95,8 +95,8 @@ router.post("/appointment", async function (req, res) {
 router.put("/update-status/:appointmentId", async function (req, res) {
     const appointmentId = req.params.appointmentId
     const data = req.body;
-    const startDate = moment(new Date(data.start)).subtract(3, "hours").format("YYYY-MM-DD HH:mm:ss.SSS")
-    const endDate = moment(new Date(data.end)).subtract(3, "hours").format("YYYY-MM-DD HH:mm:ss.SSS")
+    const startDate = moment(new Date(data.startDate)).subtract(3, "hours").format("YYYY-MM-DD HH:mm:ss.SSS")
+    const endDate = moment(new Date(data.endDate)).subtract(3, "hours").format("YYYY-MM-DD HH:mm:ss.SSS")
     let query = `UPDATE Appointments 
                 SET status = '${data.status}',
                 start_date = '${startDate}', 
