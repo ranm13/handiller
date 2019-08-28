@@ -7,7 +7,7 @@ const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
 router.get("/details/:profId", async function (req, res) {
     const profId = req.params.profId;
 
-    let query = `SELECT prof.id, first_name,last_name,email,phone,address,ci.name as city_name, description, profession
+    let query = `SELECT prof.id as prof_id, first_name,last_name,email,phone,address,ci.name as city_name, description, profession
     FROM professionals AS prof, cities AS ci, professions,professionals_areas as ps, areas
     WHERE prof.id = ${profId} AND 
     ci.id = prof.city_id AND
@@ -24,6 +24,7 @@ router.get("/details/:profId", async function (req, res) {
     const regions = queryRegionRes[0].map(r => r.region)
 
     const prof = {
+        id: queryRes.prof_id,
         firstName: queryRes.first_name,
         lastName: queryRes.last_name,
         email: queryRes.email,
