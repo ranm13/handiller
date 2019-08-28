@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
+// const sequelize = new Sequelize('mysql://root:hoshea1234@localhost/handiller_db')
 
 router.get("/details/:clientId",async function (req, res) {
     const clientId = req.params.clientId;

@@ -19,6 +19,7 @@ export class ClientStore {
     @action getPersonalData = async (id) => {
         const res = await axios.get(`http://localhost:5000/client/details/${id}`)
         this.personalData = res.data;
+        console.log(this.personalData)
     }
     
     @action getRequests = async () => {
