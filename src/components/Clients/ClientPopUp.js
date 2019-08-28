@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import Popover from '@material-ui/core/Popover';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Date from '../General/Date'
 import { observer, inject } from 'mobx-react'
 const moment = require('moment')
@@ -13,10 +10,19 @@ class ClientPopUp extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      
-
+          profId: "",
+          appointmentStatus:"",
+          clientId: "",
+          title: ""
     }
+  }
 
+  componentDidMount = () => {
+    let startDate = moment().format()  
+    this.setState({
+        startDate,
+        endDate: moment(startDate).add(2, "hours").format()
+      })
   }
   
   handleClick = async () => {
@@ -42,7 +48,6 @@ class ClientPopUp extends Component {
   handleTitleChange = async (e) => {
     let title = e.target.value
     await this.setState({title})
-    console.log()
   }
   
   render() {
