@@ -1,8 +1,18 @@
 const express = require("express");
 const router = express.Router();
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
 
-router.get("/professionals", function (req, res) {
-    
+router.get("/professionals", async function (req, res) {
+
+    let query = `SELECT Profession FROM professions`
+
+    let queryRes = await sequelize.query(query);
+    queryRes = queryRes[0];
+
+    const professions = queryRes.map(p=> p.Profession)
+
+    res.send(professions)
 })
 
 router.get("/appointment/:id?isClient", function (req, res) {
@@ -19,12 +29,26 @@ router.get("/appointments/:id", function (req, res) {
     
 })
 
-router.get("/cities", function (req, res) {
-    
+router.get("/cities", async function (req, res) {
+    let query = `SELECT name FROM cities`
+
+    let queryRes = await sequelize.query(query);
+    queryRes = queryRes[0];
+
+    const cities = queryRes.map(c=> c.name)
+
+    res.send(cities)
 })
 
-router.get("/regions", function (req, res) {
-    
+router.get("/regions", async function (req, res) {
+    let query = `SELECT name FROM areas`
+
+    let queryRes = await sequelize.query(query);
+    queryRes = queryRes[0];
+
+    const areas = queryRes.map(a=> a.name)
+
+    res.send(areas)
 })
 
 router.get("/citiesByRegion/:region", function (req, res) {
