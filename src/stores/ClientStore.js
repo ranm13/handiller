@@ -5,6 +5,7 @@ export class ClientStore {
 
     @observable professionals = []
     @observable personalData = {}
+    @observable profPersonalData = {}
     @observable clientRequests
     @observable searchInput
     @observable chosenProfessional
@@ -20,6 +21,10 @@ export class ClientStore {
         this.personalData = res.data;
     }
     
+    // @action getProfPersonalData = async (id) => {
+    //     this.profPersonalData = this.searchResults.find(p => p.profId === id)
+    // }
+
     // get clients requests by client id
     @action getRequests = async () => {
         // To Un-common:
