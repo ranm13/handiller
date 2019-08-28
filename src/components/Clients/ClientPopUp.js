@@ -1,78 +1,79 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react';
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Date from '../General/Date'
+import { observer, inject } from 'mobx-react'
+const moment = require('moment')
 
-const useStyles = makeStyles(theme => ({
-  typography: {
-    padding: theme.spacing(2),
-  },
-}));
+@inject('ClientStore')
+@observer
+class ClientPopUp extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+        selectedDate: null
+    }
 
-export default function SimplePopover(props) {
-  const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [values, setValues] = React.useState({
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
-  });
-
-  function handleClick(event) {
-    setAnchorEl(event.currentTarget);
+  }
+  
+  handleClick = async (event) => {
+    // await this.setState({anchorEL: event.currentTarget});
   }
 
-  function handleClose() {
-    props.handleClose();
+  handleClose = async () => {
+    await this.props.handleClose();
   }
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
-
-  const handleChange = name => event => {
-    setValues({ ...values, [name]: event.target.value });
-  };
-
-  return (
-    <div style={{width: "100vw"}}>
-      <Popover
-        id={id}
-        open={props.popUp}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-                
-      >
-        <Typography className={classes.typography}>Set an appointment with {props.result.firstName}:</Typography>
-        <Typography className={classes.typography}><Date /></Typography>
-        
-        <TextField
-          id="outlined-full-width"
-          label="Description"
-          style={{ margin: 8 }}
-          placeholder="Describe the problem"
-          // helperText="Full width!"
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          InputLabelProps={{
-            shrink: true,
+  handleDateChange = async (selectedDate) => {
+      selectedDate = moment(selectedDate).format()
+        await this.setState({selectedDate})
+        console.log(this.state.selectedDate)
+  }  
+  
+  render() {
+    
+    // const open = Boolean(this.state.anchorEl);
+    // const id = open ? 'simple-popover' : undefined;
+    
+    return (
+      <div style={{ width: "400px" }}>
+        <Popover
+          open={this.props.popUp}
+          anchorEl={this.state.anchorEl}
+          onClose={this.handleClose}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
           }}
-        />
+          // transformOrigin={{
+          //   vertical: 'top',
+          //   horizontal: 'center',
+          // }}
+        >
+          <Typography>Set an appointment with {this.props.result.firstName}:</Typography>
+          <Typography><Date handleDateChange={this.handleDateChange} /></Typography>
 
-        <Button>Confirm</Button>
-      </Popover>
-    </div>
-  );
+          <TextField
+            id="outlined-full-width"
+            label="Description"
+            style={{ margin: 8 }}
+            placeholder="Describe the problem"
+            // helperText="Full width!"
+            // fullWidth
+            margin="normal"
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+
+          <Button variant="contained" color="primary" onClick={this.handleClick}>Confirm</Button>
+        </Popover>
+      </div>
+    );
+  }
 }
+
+export default ClientPopUp

@@ -3,13 +3,20 @@ const axios = require('axios')
 
 export class ClientStore {
 
+    @observable professionals = ["Air Conditioner Technician", "Audio and Video Equipment Technician", "Bicycle Repairer", "Boiler Technician", "Cable Technician", "Coffee Machine Repairer", "Computer Technician", "Dishwasher Repairer", "Dryer Technician", "Electrician", "Elevator Repairer", "General Technician", "Guitar Technician", "House Cleaner", "Housekeeping Cleaner", "Lighting Technician", "Microwave Repairer", "Motorcycle Technician", "Painter", "Piano Technician", "Plumber", "Printer Technician", "Refrigerator Installer", "Refrigerator Technician", "Safe Repairer", "Scooter Technician", "Stove Repairer", "Television Technician", "Water Services Technician", "Washing Machine Repairer"]
+    
     @observable personalData = { clientId: "1", firstName: "Eitan", lastName: "Aharon", email: "eitan@gmail.com", phone: "0588966565", password: "blibli", address: "1 bli st.", city: "Tel Aviv", region: "Gush Dan"}
-
+    
     @observable clientRequests
-
+    
     @observable searchInput
     @observable chosenProfessional
     @observable searchResults
+    
+    // get list of professionals 
+    @action getProfessionalsList = async () => {
+        // this.professionals = axios.get('http://localhost:5000/professionals')
+    }
 
     // get client data by client id
     @action getPersonalData = async (id) => {
@@ -31,8 +38,9 @@ export class ClientStore {
 
     // chose the required professional
     @action selectProfession = () => {
-        if (this.searchInput!=="") {
+        if (this.professionals.find(p => p==this.searchInput)) {
             this.chosenProfessional = this.searchInput
+            this.searchPros()
         }
 
         console.log(this.chosenProfessional)

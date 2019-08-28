@@ -60,7 +60,6 @@ USE handiller_DB;
 --     FOREIGN KEY(area_id) REFERENCES Areas(id)
 -- );
 
-
 -- CREATE TABLE Appointments(
 --     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     status VARCHAR(20),
@@ -74,14 +73,6 @@ USE handiller_DB;
 --     FOREIGN KEY(client_id) REFERENCES Clients(id)
 -- );
 
--- INSERT INTO Areas (id, name) VALUES(null, "Gush-Dan");
--- INSERT INTO Areas (id, name) VALUES(null, "HaTzafon");
--- INSERT INTO Areas (id, name) VALUES(null, "The West Bank");
-
--- INSERT INTO Cities (id, name) VALUES(null, "Ramat-Gan", 1);
--- INSERT INTO Cities (id, name) VALUES(null, "Haifa", 2);
--- INSERT INTO Cities (id, name) VALUES(null, "Tel Aviv", 1);
-
 -- INSERT INTO Clients (id, first_name, last_name, email, phone, password, address, city_id) 
 -- VALUES(null, "Yossi", "Shamir", "ys@gmail.com", 0524473652, "hdjfhf133", "Hashavim 12", 3 );
 -- INSERT INTO Clients (id, first_name, last_name, email, phone, password, address, city_id) 
@@ -89,31 +80,22 @@ USE handiller_DB;
 -- INSERT INTO Clients (id, first_name, last_name, email, phone, password, address, city_id) 
 -- VALUES(null, "Moti", "Gibor", "mg36@gmail.com", 0534455447, "5236hshr", "y.b 43", 1 );
 
--- INSERT INTO Professions (id, Profession) VALUES(null, "Air Conditioner Technician");
--- INSERT INTO Professions (id, Profession) VALUES(null, "Scooter Technician");
--- INSERT INTO Professions (id, Profession) VALUES(null, "Painter");
+-- INSERT INTO Professionals (id, first_name, last_name, email, phone, password, address, city_id, description, profession_id)
+-- VALUES(null, "Idan", "THE_GEVER", "asdas@shtok.com", 055555566, "dfghd22", "Brurim 2", 3 , "A friend, A brother",23);
+-- INSERT INTO Professionals (id, first_name, last_name, email, phone, password, address, city_id, description, profession_id)
+-- VALUES(null, "LIOR", "RASRA", "tm243@gmail.com", 123123, "fdfd333r", "Hadror 26", 2 , "Boged", 3);
+-- INSERT INTO Professionals (id, first_name, last_name, email, phone, password, address, city_id, description, profession_id)
+-- VALUES(null, "Shreder", "Harasha", "turtleshater@gmail.com", 0549874362, "krain34", "Mimad X", 1 , "Atem olim li al ha-atzvim tzvim", 5);
 
--- INSERT INTO Professionals (id, first_name, last_name, email, phone, password, address, city_id, description)
--- VALUES(null, "Kira", "Marco", "km@gmail.com", 0578893633, "dfghd22", "Brurim 2", 3 , "A friend, A brother");
--- INSERT INTO Professionals (id, first_name, last_name, email, phone, password, address, city_id, description)
--- VALUES(null, "Tal", "Museri", "tm243@gmail.com", 0538354463, "fdfd333r", "Hadror 26", 2 , "Boged");
--- INSERT INTO Professionals (id, first_name, last_name, email, phone, password, address, city_id, description)
--- VALUES(null, "Shreder", "Harasha", "turtleshater@gmail.com", 0549874362, "krain34", "Mimad X", 1 , "Atem olim li al ha-atzvim tzvim");
+INSERT INTO Professionals_areas (professional_id, area_id) VALUES(2, 3);
+INSERT INTO Professionals_areas (professional_id, area_id) VALUES(1, 7);
+INSERT INTO Professionals_areas (professional_id, area_id) VALUES(2, 2);
+INSERT INTO Professionals_areas (professional_id, area_id) VALUES(3, 1);
+INSERT INTO Professionals_areas (professional_id, area_id) VALUES(3, 3);
 
--- INSERT INTO Professions_professionals (professional_id, profession_id) VALUES(1, 2);
--- INSERT INTO Professions_professionals (professional_id, profession_id) VALUES(2, 1);
--- INSERT INTO Professions_professionals (professional_id, profession_id) VALUES(3, 3);
-
--- INSERT INTO Professionals_areas (professional_id, area_id) VALUES(1, 1);
--- INSERT INTO Professionals_areas (professional_id, area_id) VALUES(1, 3);
--- INSERT INTO Professionals_areas (professional_id, area_id) VALUES(2, 2);
--- INSERT INTO Professionals_areas (professional_id, area_id) VALUES(3, 1);
--- INSERT INTO Professionals_areas (professional_id, area_id) VALUES(3, 3);
-
--- INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
--- VALUES(null, "approved", CURRENT_DATE(), CURRENT_DATE(), "meeting 1", 2, 3 );
--- INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
--- VALUES(null, "canceld", CURRENT_DATE(), CURRENT_DATE(), "meeting 2", 1, 2 );
--- INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
--- VALUES(null, "pending", CURRENT_DATE(), CURRENT_DATE(), "meeting 3", 2, 1 );
-
+INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
+VALUES(null, "approved", CURRENT_DATE(), CURRENT_DATE(), "meeting 1", 2, 3 );
+INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
+VALUES(null, "canceld", CURRENT_DATE(), CURRENT_DATE(), "meeting 2", 1, 2 );
+INSERT INTO Appointments (id, status, start_date, end_date, title, professional_id, client_id)
+VALUES(null, "pending", CURRENT_DATE(), CURRENT_DATE(), "meeting 3", 2, 1 );
