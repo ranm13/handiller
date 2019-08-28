@@ -9,16 +9,19 @@ import { ClientStore } from './stores/ClientStore';
 import { HistoryStore } from './stores/HistoryStore';
 import { LogInStore } from './stores/LogInStore';
 import { SignUpStore } from './stores/SignUpStore';
+import { ProfessionalStore } from './stores/ProfessionalStore';
+
 
 const signUpStore = new SignUpStore()
 const logInStore = new LogInStore()
 const profEventsStore = new ProfEventsStore()
 const clientStore = new ClientStore()
+const professionalStore = new ProfessionalStore()
 const historyStore = new HistoryStore()
 
-const stores = {signUpStore, logInStore, clientStore, profEventsStore, historyStore}
+const stores = {signUpStore, logInStore, clientStore, profEventsStore, historyStore, professionalStore}
 
-ReactDOM.render(<Provider {... stores}>
+ReactDOM.render(<Provider {...stores}>
                     <App />
                 </Provider>, document.getElementById('root'));
 

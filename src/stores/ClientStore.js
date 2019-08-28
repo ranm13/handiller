@@ -5,7 +5,8 @@ export class ClientStore {
 
     @observable professionals = []
     @observable personalData = {}
-    @observable clientRequests
+    @observable profPersonalData = {}
+    @observable clientRequests = [];
     @observable searchInput
     @observable chosenProfessional
     @observable searchResults
@@ -18,21 +19,19 @@ export class ClientStore {
     @action getPersonalData = async (id) => {
         const res = await axios.get(`http://localhost:5000/client/details/${id}`)
         this.personalData = res.data;
+        console.log(this.personalData)
     }
     
-    // get clients requests by client id
     @action getRequests = async () => {
-        // To Un-common:
-        // this.clientRequests = await axios.get(`http://localhost:5000/appointment/:${this.personalData.id}?isClient=true`)
+        const res = await axios.get(`http://localhost:5000/general/appointments/${this.personalData.id}?isClient=true`);
+        this.clientRequests = [...res.data]
     }
     
     
-    // Input Handler
     @action inputHandler = (value) => {
         this.searchInput = value
     }
 
-    // chose the required professional
     @action selectProfession = () => {
         if (this.professionals.find(p => p==this.searchInput)) {
             this.chosenProfessional = this.searchInput
@@ -45,19 +44,15 @@ export class ClientStore {
         this.searchResults = [...res.data]     
     }
     
-    // create appoinment
-    @action requestAppointments = async (appData) => {
-        // To Un-common:
-        // await axios.post(`http://localhost:5000/appointment`, {...appData})
+    @action createAppointment = async (appointment) => {
+        axios.post(`http://localhost:5000/general/appointment`, appointment)
     }
     
-    // cancel appointment
     @action cancelAppointment = async (id) => {
         // To Un-common:
         // await axios.put(`http://localhost:5000/update-status/${id}`, {status: "decline"})
     }
     
-    // update personal data (through settings)
     @action updatePersonalData = async (data) => {
         // To Un-common:
         // await axios.put(`http://localhost:5000/settings/${id}?isClient=true`, {data})

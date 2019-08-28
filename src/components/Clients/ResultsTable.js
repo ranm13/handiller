@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
 import { Paper, TableCell } from '@material-ui/core'
 import RowResults from './RowResults';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';

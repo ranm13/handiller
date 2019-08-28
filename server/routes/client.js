@@ -2,11 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
+// const sequelize = new Sequelize('mysql://root:hoshea1234@localhost/handiller_db')
 
 router.get("/details/:clientId",async function (req, res) {
     const clientId = req.params.clientId;
 
-    let query = `SELECT cl.id, first_name,last_name,email,phone,address,ci.name as city_name, areas.name as region
+    let query = `SELECT cl.id as client_id, first_name,last_name,email,phone,address,ci.name as city_name, areas.name as region
     FROM clients AS cl, cities AS ci, areas
     WHERE 
     cl.id = ${clientId} AND 
@@ -17,6 +18,7 @@ router.get("/details/:clientId",async function (req, res) {
     queryRes = queryRes[0][0];
 
     const client = {
+        id: queryRes.client_id,
         firstName: queryRes.first_name,
         lastName: queryRes.last_name,
         email: queryRes.email,

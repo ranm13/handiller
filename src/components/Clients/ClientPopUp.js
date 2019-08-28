@@ -1,8 +1,6 @@
+import xButton from './img/xButton3.png'
 import React, { Component } from 'react';
-import Popover from '@material-ui/core/Popover';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Date from '../General/Date'
 import { observer, inject } from 'mobx-react'
 const moment = require('moment')
@@ -13,64 +11,60 @@ class ClientPopUp extends Component {
   constructor(props) {
     super(props)
     this.state = {
-        selectedDate: null
+      profId: "",
+      appointmentStatus: "",
+      clientId: "",
+      title: ""
     }
-
   }
-  
-  handleClick = async (event) => {
-    // await this.setState({anchorEL: event.currentTarget});
+
+  componentDidMount = () => {
+    let startDate = moment().format()
+    this.setState({
+      startDate,
+      endDate: moment(startDate).add(2, "hours").format()
+    })
+  }
+
+  handleClick = async () => {
+    let profId = this.props.result.profId
+    let appointmentStatus = "Pending"
+    let clientId = this.props.clientStore.personalData.id
+    await this.setState({ profId, appointmentStatus, clientId })
+    this.handleClose()
+    this.props.clientStore.createAppointment(this.state)
+    console.log(this.state)
   }
 
   handleClose = async () => {
     await this.props.handleClose();
   }
 
-  handleDateChange = async (selectedDate) => {
-      selectedDate = moment(selectedDate).format()
-        await this.setState({selectedDate})
-        console.log(this.state.selectedDate)
-  }  
-  
+  handleDateChange = async (startDate) => {
+    startDate = moment(startDate).format()
+    let endDate = moment(startDate).add(2, "hours").format()
+    await this.setState({ startDate, endDate })
+  }
+
+  handleTitleChange = async (e) => {
+    let title = e.target.value
+    await this.setState({ title })
+  }
+
+  // handleCancel = async () => {
+  //   await 
+  // }
+
   render() {
-    
-    // const open = Boolean(this.state.anchorEl);
-    // const id = open ? 'simple-popover' : undefined;
-    
+
+    console.log(this.props.result)
     return (
-      <div style={{ width: "400px" }}>
-        <Popover
-          open={this.props.popUp}
-          anchorEl={this.state.anchorEl}
-          onClose={this.handleClose}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
-          }}
-          // transformOrigin={{
-          //   vertical: 'top',
-          //   horizontal: 'center',
-          // }}
-        >
-          <Typography>Set an appointment with {this.props.result.firstName}:</Typography>
-          <Typography><Date handleDateChange={this.handleDateChange} /></Typography>
-
-          <TextField
-            id="outlined-full-width"
-            label="Description"
-            style={{ margin: 8 }}
-            placeholder="Describe the problem"
-            // helperText="Full width!"
-            // fullWidth
-            margin="normal"
-            variant="outlined"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-
-          <Button variant="contained" color="primary" onClick={this.handleClick}>Confirm</Button>
-        </Popover>
+      <div className="pop-up">
+        <div className="pop-up-header">Appointment with {this.props.result.firstName}:</div>
+        <div className="pop-up-date"><Date handleDateChange={this.handleDateChange} /></div>
+        <div className="pop-up-title"><input type="text" className="pop-up-title-input" name="lastname" placeholder="What's wrong..." onChange={this.handleTitleChange} /></div>
+        <button className="pop-up-button" onClick={this.handleClick}>CONFIRM</button>
+        <img className="pop-up-xButton" src={xButton} onClick={this.props.handleClose} />
       </div>
     );
   }

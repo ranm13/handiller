@@ -1,22 +1,23 @@
 import { observable, action } from 'mobx'
 import moment from "moment";
-import { ProfEventStore } from './ProfEventStore'
-// import axios from 'axios'
+import axios from 'axios'
 
 export class ProfEventsStore {
-    @observable events = []
+    @observable appointments = []
 
-    @action addEvent = (title, start) => {
-        start = new Date(moment(start))
-        let end = new Date(moment(start).add(2, "hours"))
-        this.events.push(new ProfEventStore(title, start, end))
+    @action getAppointments = async (id) => {
+        let response = await axios.get(`http://localhost:5000/general/appointments/${id}?isClient=false`)
+        this.appointments = response.data.filter(a => a.status === "approved")
+        this.appointments.forEach(a => {
+            a.start = new Date(moment(a.startDate))
+            a.end =  new Date(moment(a.endDate).add(2, "hours"))
+        })
+        console.log(this.appointments)
     }
 
     @action onClick = () => {
-        console.log("fuck off");
+        // console.log("fuck off");
         // console.log(end);
       };
-
-    // תוסיף תערוך תמחוק
 }
 

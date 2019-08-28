@@ -16,7 +16,7 @@
   position: absolute;
   font-family: 'Lexend Peta', sans-serif;
   font-size: 1.3em;
-  animation: H 6s linear infinite;
+  animation: H 4s linear infinite;
 }
 
 .andiler{
@@ -36,4 +36,62 @@
 .custom-input{
   text-align: center;
   font-family: 'Montserrat', sans-serif;
+}
+
+.pop-up{
+  position: absolute;
+  left: 30%;
+  top: 25%;
+  width: 31vw;
+  height: 33vh;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  border: 2px solid rgb(78, 77, 77);
+  box-shadow: 2px 2px rgb(37, 37, 37);
+  border-radius: 6px;
+  align-content: center;
+}
+
+.pop-up-header{
+  font-weight: bold;
+  margin: 1em 0;
+}
+
+.pop-up-title{
+  margin: 1em 0;
+}
+
+.pop-up-title-input{
+  width: 30vw;
+  height: 2vw;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  padding-left: 3px;
+}
+
+.pop-up-button{
+  float: right;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8em;
+  font-weight: bold;
+  border-radius: 3px;
+
+  
+}
+
+.pop-up-button:hover{
+  cursor: pointer;
+  background-color: rgb(10, 0, 46);
+  color: rgb(235, 230, 230);
+}
+
+.pop-up-xButton{
+  position: absolute;
+  left: 30vw;
+  top:1vh;
+  width:2vw;
+  height:4.5vh;
+
 }
