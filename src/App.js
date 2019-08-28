@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './styles/App.css';
 import { observer } from 'mobx-react'
-import ProfHomePage from './components/Pros/ProfHomePage';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Date from './components/Date';
-import History from './components/Clients/History';
-import Settings from './components/Clients/Settings';
-import Home from './components/Clients/Home';
-import ClientHomePage from './components/Clients/ClientHomePage';
+import History from './components/Clients/ClientHistory';
+import Settings from './components/Clients/ClientSettings';
+import Home from './components/Clients/ClientHome';
 import Logo from './components/General/Logo';
+import ClientHomePage from './components/Clients/ClientHomePage';
+import ProfHomePage from './components/Pros/ProfHomePage';
+// import Date from './components/Date';
 
 @observer
 class App extends Component {
@@ -17,19 +17,18 @@ class App extends Component {
       <Router>
         <div className="App">
           <Logo/>
-          <ClientHomePage />
-          {/* <ProfHomePage /> */}
+          {/* <Date /> */}
+          {/* <ClientHomePage /> */}
+          <ProfHomePage />
 
-          <Route exact path="/home" component={Home} />
+          {/* <Route exact path="/home" component={Home} />
           <Route exact path="/history" component={History} />
-          <Route exact path="/settings" component={Settings} />
+          <Route exact path="/settings" component={Settings} /> */}
         </div>
       </Router>
     );
-
-
   }
-
 }
 
 export default App;
+

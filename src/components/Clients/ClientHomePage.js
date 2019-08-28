@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
-import NavBar from '../General/NavBar';
+import NavBar from './Client-NavBar';
 
 
 @observer

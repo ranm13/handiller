@@ -4,7 +4,7 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Date from '../Date'
+import Date from '../General/Date'
 
 const useStyles = makeStyles(theme => ({
   typography: {
