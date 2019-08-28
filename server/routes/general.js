@@ -74,9 +74,9 @@ router.get("/regions", async function (req, res) {
 
 router.post("/appointment", async function (req, res) {
     const data = req.body;
-    const startDate = moment(new Date(data.start)).subtract(3, "hours").format("YYYY-MM-DD HH:mm:ss.SSS")
-    const endDate = moment(new Date(data.end)).subtract(3, "hours").format("YYYY-MM-DD HH:mm:ss.SSS")
-    let query = `INSERT INTO Appointments VALUES ( null, "pending", '${startDate}', '${endDate}', '${data.title}', ${data.pro_id}, ${data.cli_id});`
+    const startDate = moment(new Date(data.startDate)).subtract(3, "hours").format("YYYY-MM-DD HH:mm:ss.SSS")
+    const endDate = moment(new Date(data.endDate)).subtract(3, "hours").format("YYYY-MM-DD HH:mm:ss.SSS")
+    let query = `INSERT INTO Appointments VALUES ( null, "pending", '${startDate}', '${endDate}', '${data.title}', ${data.profId}, ${data.clientId});`
     await sequelize.query(query)
     res.end()
 })

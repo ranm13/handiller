@@ -51,9 +51,8 @@ export class ClientStore {
     }
     
     // create appoinment
-    @action requestAppointments = async (appData) => {
-        // To Un-common:
-        // await axios.post(`http://localhost:5000/appointment`, {...appData})
+    @action createAppointment = async (appointment) => {
+        axios.post(`http://localhost:5000/general/appointment`, appointment)
     }
     
     // cancel appointment

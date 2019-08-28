@@ -31,7 +31,7 @@ class ClientPopUp extends Component {
     let clientId = this.props.clientStore.personalData.id
     await this.setState({profId, appointmentStatus, clientId})
     this.handleClose()
-    // this.props.clientStore.createAppointments(this.state)
+    this.props.clientStore.createAppointment(this.state)
     console.log(this.state)
   }
 
