@@ -8,10 +8,9 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import CollapseRow from './CollapseRow';
 
-@inject("historyStore")
+@inject("historyStore", "clientStore")
 
 @observer
-
 class CollapseItem extends Component {
 
     handleClick = () => {
@@ -20,6 +19,8 @@ class CollapseItem extends Component {
     
     render() {
         let historyStore = this.props.historyStore
+        let clientStore = this.props.clientStore
+        let text = this.props.text
         return (
         <div>
             <ListItem button  onClick={this.handleClick}>
@@ -27,9 +28,12 @@ class CollapseItem extends Component {
                     {historyStore[this.props.toObserve] ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
             <Collapse in={historyStore[this.props.toObserve]} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                  {[0, 1, 2 ,3].map(i => <CollapseRow key={i} text={this.props.text}/>)}
-              </List>
+                <List component="div" disablePadding>
+                    {[0, 1, 2 ,3].map(i => <CollapseRow key={i} text={this.props.text}/>)}
+                    {/* {clientStore.clientRequests
+                                            .filter(i => i.status === text.toLowerCase())
+                                            .map(i => <CollapseRow key={i.id} text={this.props.text} appointmentData={i} />)} */}
+                </List>
             </Collapse>
         </div>)
     }

@@ -18,7 +18,7 @@ const historyStore = new HistoryStore()
 
 const stores = {signUpStore, logInStore, clientStore, profEventsStore, historyStore}
 
-ReactDOM.render(<Provider {... stores}>
+ReactDOM.render(<Provider {...stores}>
                     <App />
                 </Provider>, document.getElementById('root'));
 
