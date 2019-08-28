@@ -8,8 +8,16 @@ Sequelize.DATE.prototype._stringify = function _stringify(date, options) {
 };
 const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
 
-router.get("/professionals", function (req, res) {
-    
+router.get("/professionals", async function (req, res) {
+
+    let query = `SELECT Profession FROM professions`
+
+    let queryRes = await sequelize.query(query);
+    queryRes = queryRes[0];
+
+    const professions = queryRes.map(p=> p.Profession)
+
+    res.send(professions)
 })
 
 
@@ -19,12 +27,26 @@ router.get("/appointments/:id", function (req, res) {
     
 })
 
-router.get("/cities", function (req, res) {
-    
+router.get("/cities", async function (req, res) {
+    let query = `SELECT name FROM cities`
+
+    let queryRes = await sequelize.query(query);
+    queryRes = queryRes[0];
+
+    const cities = queryRes.map(c=> c.name)
+
+    res.send(cities)
 })
 
-router.get("/regions", function (req, res) {
-    
+router.get("/regions", async function (req, res) {
+    let query = `SELECT name FROM areas`
+
+    let queryRes = await sequelize.query(query);
+    queryRes = queryRes[0];
+
+    const areas = queryRes.map(a=> a.name)
+
+    res.send(areas)
 })
 
 router.post("/appointment",async function (req, res) {
@@ -39,8 +61,6 @@ router.post("/appointment",async function (req, res) {
 router.put("/update-status/:appointmentId", async function (req, res) {
     const appointmentId = req.params.appointmentId
     const data = req.body;
-    console.log(appointmentId)
-    console.log(data)
     const startDate = moment(new Date(data.start)).subtract(3, "hours").format("YYYY-MM-DD HH:mm:ss.SSS")
     const endDate = moment(new Date(data.end)).subtract(3, "hours").format("YYYY-MM-DD HH:mm:ss.SSS")
     let query =`UPDATE Appointments 
@@ -55,10 +75,3 @@ router.put("/update-status/:appointmentId", async function (req, res) {
 
 module.exports = router;
 
-// const insertCity = async function(cityName, areaId){
-//     let query =`INSERT INTO cities VALUES ( null, "${cityName}", ${areaId});`
-//     let result = await sequelize.query(query)
-//     return result[0]
-// }
-// (null, "approved", CURRENT_DATE(), CURRENT_DATE(), "meeting 1", 2, 3 )
-// Appointments (id, status, start_date, end_date, title, professional_id, client_id)
