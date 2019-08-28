@@ -36,7 +36,7 @@ router.get("/appointments/:id", async function (req, res) {
     ${fieldToSearch}=${id} AND
     clients.id = appointments.client_id AND
     professionals.id = appointments.professional_id AND
-    professions.id = appointments.professional_id
+    professions.id = professionals.professional_id
     `
 
     let queryRes = await sequelize.query(query);
