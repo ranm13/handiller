@@ -32,7 +32,6 @@ class RowResults extends Component {
                     <TableCell>{result.firstName} {result.lastName}</TableCell>
                     <TableCell>{result.email}</TableCell>
                     <TableCell>{result.phone}</TableCell>
-                    <TableCell>{result.region}</TableCell>
                     <TableCell>{result.profession}</TableCell>
                     <TableCell>{result.description}</TableCell>
                     <TableCell><Button variant="contained" color="primary" onClick={this.handleOpen}>SELECT</Button></TableCell>
