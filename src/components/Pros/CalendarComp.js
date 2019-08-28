@@ -8,26 +8,24 @@ import moment from "moment";
 @inject( "professionalStore")
 
 @observer
+
+
 class CalendarComp extends Component { 
 
   async componentDidMount() {
-    // this.props.profEventsStore.getAppointments(2)
     await this.props.professionalStore.getPersonalData(2)
   }
 
   render() {
     const localizer = momentLocalizer(moment);
     return (
-      <div className="Calendar">
-        <Calendar
-          events={this.props.professionalStore.allRequests}
-          onSelectEvent={this.popUp}
-          defaultDate={new Date()}
-          defaultView="month"
-          step={60}
+          <Calendar
+          defaultDate={new Date()} 
+          events={this.props.professionalStore.approvedRequsets}
           localizer={localizer}
+          defaultView="month"
+          resizable
           style={{ height: "88vh" }}/>
-      </div>
     );
   }
 }
