@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
-import { Paper, Grid, Button, Typography } from '@material-ui/core'
+import { Paper, Button, Typography } from '@material-ui/core'
 
 @observer
 class RowRequests extends Component {
