@@ -20,6 +20,7 @@ class CollapseItem extends Component {
         let historyStore = this.props.historyStore
         let clientStore = this.props.clientStore
         let text = this.props.text
+        let headers = ["Name", "Profession", "Date", "From", "To", ""]
         return (
         <div>
             <ListItem button  onClick={this.handleClick}>
@@ -27,6 +28,9 @@ class CollapseItem extends Component {
                     {historyStore[this.props.toObserve] ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
             <Collapse in={historyStore[this.props.toObserve]} timeout="auto" unmountOnExit>
+                <ListItem component="div" disablePadding>
+                    {headers.map(h => <ListItemText primary={h}/> )}
+                    </ListItem> 
                 <List component="div" disablePadding>
                     {clientStore.clientRequests.length === 0 ? null 
                                         : clientStore.clientRequests
