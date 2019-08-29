@@ -18,6 +18,7 @@ export class ProfessionalStore {
     @action getPersonalData = async (id) => {
         let response = await axios.get(`http://localhost:5000/prof/details/${id}`)
         this.personalData = response.data
+        this.personalDataInputs = this.personalData
         this.getRequests()
     }
     // change appointment request (CANCEL or APPROVE) sent by the client
