@@ -1,8 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Lexend+Peta|Montserrat|Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lexend+Peta|Roboto|Montserrat|Raleway&display=swap');
 
 /* .clientHomePage{
   font-family: 'Montserrat', sans-serif;
 } */
+
+.App{
+  /* background-image: url('https://free4kwallpapers.com/uploads/originals/2015/09/02/tools-pattern.jpg');
+ background-size: 100%;
+ background-repeat: no-repeat;
+ background-attachment: fixed; */
+}
 
 .logo{
   position: absolute;
@@ -52,6 +59,7 @@
   box-shadow: 2px 2px rgb(37, 37, 37);
   border-radius: 6px;
   align-content: center;
+  color: rgb(19, 19, 19);
 }
 
 .pop-up-header{
@@ -73,26 +81,31 @@
 
 .pop-up-button{
   float: right;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1em;
-  font-weight: bold;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 0.8em;
   border-radius: 3px;
+  color: #fff;
+  padding: 9px 12px;
+  border: none;
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);
 }
 
 .pop-up-button:hover{
   cursor: pointer;
-  background-color: rgb(10, 0, 46);
-  color: rgb(235, 230, 230);
 }
 
 .pop-up-xButton{
   position: absolute;
-  left: 30vw;
+  left: 30.5vw;
   top:1vh;
-  width:2vw;
-  height:4.5vh;
+  width:19px;
+  height:22px;
 }
 
 .pop-up-xButton:hover{
   cursor: pointer;
+}
+
+#datetime-local{
+  color: rgb(19, 19, 19);
 }
