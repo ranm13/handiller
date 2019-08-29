@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import './styles/App.css';
 import { observer, inject } from 'mobx-react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom'
 import ClientHistory from './components/Clients/ClientHistory';
 import ClientSettings from './components/Clients/ClientSettings';
 import ClientHome from './components/Clients/ClientHome';
 import Logo from './components/General/Logo';
 import ClientHomePage from './components/Clients/ClientHomePage';
 import ProfHomePage from './components/Pros/ProfHomePage';
-import ProfHome from './components/Pros/ProfHome';
 import Button from '@material-ui/core/Button';
 import ProfSettings from './components/Pros/ProfSettings';
+import { Grid } from '@material-ui/core';
+import ProfHome from './components/Pros/ProfHome';
 
 @inject('logInStore')
 
@@ -24,24 +25,28 @@ class App extends Component {
           <Logo/>
 
           {!(logInStore.isClient || logInStore.isProf)?   
-          <div>    
-            <Button variant="contained" color="primary" onClick={logInStore.enterToClient}>
-                Client
-            </Button>
-            <Button variant="contained" color="secondary"  onClick={logInStore.enterToProf}>
-                Professional
-            </Button>
-          </div>  : null}
+          <Grid container justify="center" alignItems="center" style={{height:"90vh"}} spacing={6}> 
+            <Grid item>
+              <Button variant="contained" color="primary" onClick={logInStore.enterToClient} to='/client/home' component={Link}>
+                  Client
+              </Button>
+            </Grid>   
+            <Grid item>
+              <Button variant="contained" color="secondary"  onClick={logInStore.enterToProf} to='/prof/home' component={Link}>
+                  Professional
+              </Button>
+            </Grid>  
+          </Grid>  : null}
 
           {logInStore.isClient? <ClientHomePage />:
-          logInStore.isProf? <ProfHome />
+          logInStore.isProf? <ProfHomePage />
           : null}
 
-          <Route exact path="/client/home" component={ClientHome} />
-          <Route exact path="/client/history" component={ClientHistory} />
-          <Route exact path="/client/settings" component={ClientSettings} />
-          <Route exact path="/prof/home" component={ProfHomePage} />
-          <Route exact path="/prof/settings" component={ProfSettings} />
+          {logInStore.isClient? <Route exact path="/client/home" component={ClientHome} /> : <Redirect to="/"/>}
+          {logInStore.isClient? <Route exact path="/client/history" component={ClientHistory} /> : <Redirect to="/"/>}
+          {logInStore.isClient? <Route exact path="/client/settings" component={ClientSettings} /> : <Redirect to="/"/>}
+          {logInStore.isProf? <Route exact path="/prof/home" component={ProfHome} /> : <Redirect to="/"/>}
+          {logInStore.isProf? <Route exact path="/prof/settings" component={ProfSettings} /> : <Redirect to="/"/>}
         </div>
       </Router>
     );

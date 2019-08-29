@@ -1,25 +1,51 @@
-import React, {Component} from 'react'
-import { observer } from 'mobx-react'
-import { Paper, Grid, Button, Typography } from '@material-ui/core'
+import React, { Component } from 'react'
+import { observer, inject } from 'mobx-react'
+import { Paper, Grid, Button, TextField, Typography } from '@material-ui/core'
+
+@inject("clientStore")
 
 @observer
 class Settings extends Component {
     render() {
+        let personalData = this.props.clientStore.personalData
         return (
-            <div className="settings">
-            <Grid container spacing={1} container direction="column" justify="center" alignItems="center"> <p>Update Sattings:</p></Grid>
-             <Paper><Grid container spacing={1} container direction="column" justify="center" alignItems="center">
-                <Grid> <Typography variant="h5">FirstName: this.props.FirstName</Typography> </Grid>
-                <Grid>  <Typography variant="h5">LastName: this.props.LastName</Typography></Grid>
-                <Grid><Typography variant="h5">Email: this.props.Email</Typography></Grid>
-                <Grid><Typography variant="h5">Phone: this.props.Phone</Typography></Grid>
-                <Grid><Typography variant="h5">Password: this.props.Password</Typography></Grid>
-                <Grid> <Typography variant="h5">City: this.props.City</Typography></Grid>
-                 <Button variant="contained" color="primary" onClick={this.handleOpen}>APPROVE Changes</Button>
-                 </Grid> </Paper>
-         </div>
+            <Grid container style={{width: "100vw"}} justify="center" alignItems="center">
+                <Grid item>
+                    <Paper style={{marginTop: "5vh", width: "50vw"}}>
+                        <Grid container style={{ height:"5vh"}} justify="center" alignItems="center">
+                            <Grid item>
+                                <Typography variant="h4">Update Personal Data</Typography>
+                            </Grid>
+                        </Grid>
+                        <Grid container spacing={8} style={{height:"70vh"}} justify="center" alignItems="center">
+                            <Grid item>
+                                <TextField label="First Name" defaultValue={personalData.firstName}/>
+                            </Grid>
+                            <Grid item>
+                                <TextField label="Last Name" defaultValue={personalData.lastName}  />
+                            </Grid>
+                            <Grid item>
+                                <TextField label="Email" defaultValue={personalData.email} />
+                            </Grid>
+                            <Grid item>
+                                <TextField  label="Phone" defaultValue={personalData.phone} />
+                            </Grid>
+                            <Grid item>
+                                <TextField  label="Password" type="password" /> 
+                            </Grid>
+                            <Grid item>
+                                <TextField  label="City" defaultValue={personalData.city} /> 
+                            </Grid>
+                        </Grid>
+                        <Grid container style={{ height:"15vh"}} justify="center" alignItems="center">
+                            <Grid item>
+                                <Button variant="contained" color="primary" onClick={this.handleOpen}>APPROVE Changes</Button>
+                            </Grid>
+                        </Grid>
+                    </Paper>
+                </Grid>
+            </Grid>    
         )
-
     }
 }
 export default Settings
