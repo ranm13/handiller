@@ -43,7 +43,7 @@
   left: 30%;
   top: 25%;
   width: 31vw;
-  height: 33vh;
+  height: 31vh;
   background-color: rgb(255, 255, 255);
   padding: 10px;
   font-family: 'Montserrat', sans-serif;
@@ -74,11 +74,9 @@
 .pop-up-button{
   float: right;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.8em;
+  font-size: 1em;
   font-weight: bold;
   border-radius: 3px;
-
-  
 }
 
 .pop-up-button:hover{
@@ -93,5 +91,8 @@
   top:1vh;
   width:2vw;
   height:4.5vh;
+}
 
+.pop-up-xButton:hover{
+  cursor: pointer;
 }
