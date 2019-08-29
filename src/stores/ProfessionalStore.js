@@ -5,6 +5,7 @@ const axios = require('axios')
 export class ProfessionalStore {
     @observable personalData
     @observable allRequests = []
+    @observable personalDataInputs = {}
 
     @computed get pendingRequests(){
         return this.allRequests.filter(a => a.appointmentStatus === "pending")
@@ -14,7 +15,6 @@ export class ProfessionalStore {
         return this.allRequests.filter(a => a.appointmentStatus === "approved")
     }
   
-
     @action getPersonalData = async (id) => {
         let response = await axios.get(`http://localhost:5000/prof/details/${id}`)
         this.personalData = response.data
@@ -36,10 +36,16 @@ export class ProfessionalStore {
         })
     }
     
+    @action settingsInputHandler = (name, value) => {
+        this.personalDataInputs[name] = value
+    }
+
     // update personal data (through settings)
-    @action updatePersonalData = async (data) => {
-        // To Un-common:
-        // await axios.put(`http://localhost:5000/settings/${id}?isClient=false`, {data})
+    @action updatePersonalData = async () => {
+        let id = this.personalData.id
+        this.personalData = this.personalDataInputs
+        console.log(id, this.personalData)
+        // await axios.put(`http://localhost:5000/general/settings/${id}?isClient=false`, this.personalDataInputs)
     }
 
 }
