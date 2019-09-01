@@ -4,6 +4,30 @@ const Sequelize = require('sequelize')
 const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
 // const sequelize = new Sequelize('mysql://root:hoshea1234@localhost/handiller_db')
 
+router.post("/signup", async function(req,res){
+    const d = req.body;
+
+    let queryCity = `SELECT *
+    FROM cities
+    WHERE name = "${d.cityName}"`
+
+    let cityNum = await sequelize.query(queryCity);
+    cityNum = cityNum[0][0].id;
+
+    let newClientQuery = `INSERT INTO clients 
+        VALUES ( null,
+            '${d.firstName}',
+            '${d.lastName}',
+            '${d.email}',
+            ${d.phone},
+            '${d.pass}',
+            '${d.address}',
+            ${cityNum});`
+    
+    await sequelize.query(newClientQuery)
+    res.end()
+})
+
 router.get("/details/:clientId",async function (req, res) {
     const clientId = req.params.clientId;
 
