@@ -13,7 +13,7 @@ function NavBar() {
 
   return (
     
-    <Paper className="nav-bar">
+    <Paper className="nav-bar" style={{backgroundColor: '#efebe9', marginBottom: "2vh"}}>
       <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary" centered>
         <Tab label="Home" to='/prof/home' component={Link} />
         <Tab label="Settings" to='/prof/settings' component={Link} />

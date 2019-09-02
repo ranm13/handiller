@@ -11,10 +11,10 @@ class ProfSettings extends Component {
         return (
             <Grid container style={{width: "100vw"}} justify="center" alignItems="center">
                 <Grid item>
-                    <Paper style={{marginTop: "5vh", width: "60vw"}}>
-                        <Grid container style={{height:"5vh"}} justify="center" alignItems="center">
+                    <Paper style={{ width: "60vw"}}>
+                        <Grid container style={{height:"14vh"}} justify="center" alignItems="center">
                             <Grid item>
-                                <Typography variant="h4">Update Personal Data</Typography>
+                                <Typography variant="h4" style={{fontFamily: "'Montserrat', sans-serif", fontWeight: "bold"}}>Update Personal Data</Typography>
                             </Grid>
                         </Grid>
                         <Grid container spacing={8} style={{height:"70vh"}} justify="center" alignItems="center">

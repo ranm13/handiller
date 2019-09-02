@@ -12,6 +12,15 @@ import Button from '@material-ui/core/Button';
 import ProfSettings from './components/Pros/ProfSettings';
 import { Grid } from '@material-ui/core';
 import ProfHome from './components/Pros/ProfHome';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#0b8e42' },
+    secondary: { main: '#c0392b' },
+  },
+});
 
 @inject('logInStore')
 
@@ -20,6 +29,7 @@ class App extends Component {
   render() {
     const logInStore = this.props.logInStore
     return (
+      <ThemeProvider theme={theme}>
       <Router>
         <div className="App">
           <Logo/>
@@ -47,8 +57,10 @@ class App extends Component {
           {logInStore.isClient? <Route exact path="/client/settings" component={ClientSettings} /> : <Redirect to="/"/>}
           {logInStore.isProf? <Route exact path="/prof/home" component={ProfHome} /> : <Redirect to="/"/>}
           {logInStore.isProf? <Route exact path="/prof/settings" component={ProfSettings} /> : <Redirect to="/"/>}
+
         </div>
       </Router>
+      </ThemeProvider>
     );
   }
 }

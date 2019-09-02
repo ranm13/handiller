@@ -26,7 +26,6 @@ class Date extends Component {
       <form noValidate>
         <TextField
           id="datetime-local"
-          // label="Choose a comfortable date"
           type="datetime-local"
           onChange={this.handleDateChange}
           value={this.state.value}
@@ -34,9 +33,6 @@ class Date extends Component {
             shrink: true,
           }}
         />
-        {/* <IconButton onClick={this.selectDate} >
-          <AddCircleIcon />
-        </IconButton> */}
       </form>
     );
   }
