@@ -5,6 +5,7 @@ export class ClientStore {
 
     @observable professionals = []
     @observable personalData = {}
+    @observable personalDataInputs = {}
     @observable profPersonalData = {}
     @observable clientRequests = [];
     @observable searchInput
@@ -19,7 +20,7 @@ export class ClientStore {
     @action getPersonalData = async (id) => {
         const res = await axios.get(`http://localhost:5000/client/details/${id}`)
         this.personalData = res.data;
-        console.log(this.personalData)
+        this.personalDataInputs = this.personalData
     }
     
     @action getRequests = async () => {
@@ -30,6 +31,10 @@ export class ClientStore {
     
     @action inputHandler = (value) => {
         this.searchInput = value
+    }
+
+    @action settingsInputHandler = (name, value) => {
+        this.personalDataInputs[name] = value
     }
 
     @action selectProfession = () => {
@@ -53,9 +58,11 @@ export class ClientStore {
         this.getRequests()
     }
     
-    @action updatePersonalData = async (data) => {
-        // To Un-common:
-        // await axios.put(`http://localhost:5000/settings/${id}?isClient=true`, {data})
+    @action updatePersonalData = async () => {
+        let id = this.personalData.id
+        this.personalData = this.personalDataInputs
+        console.log(id, this.personalData)
+        // await axios.put(`http://localhost:5000/general/settings/${id}?isClient=true`, this.personalDataInputs)
     }
 
 }
