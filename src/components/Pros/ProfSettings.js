@@ -3,9 +3,9 @@ import { observer, inject } from 'mobx-react'
 import { Paper, Grid, Button, TextField, Typography } from '@material-ui/core'
 
 @inject("professionalStore")
-
 @observer
 class ProfSettings extends Component {
+    
     render() {
         let personalData = this.props.professionalStore.personalData
         return (

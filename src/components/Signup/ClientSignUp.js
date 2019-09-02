@@ -1,95 +1,67 @@
 import React, { Component } from 'react';
+import { Paper, Grid, Button, TextField, Typography } from '@material-ui/core'
 import { observer, inject } from 'mobx-react'
-import Radio from '@material-ui/core/Radio';
-// import MenuItem from '@material-ui/core/MenuItem';
-import { FormLabel, Grid, Paper, Button, Typography, TextField, withStyles, makeStyles, FormControlLabel, RadioGroup } from '@material-ui/core'
-
-const CssTextField = withStyles({
-    root: {
-        '& label.Mui-focused': {
-            color: 'green',
-        },
-        '& .MuiInput-underline:after': {
-            borderBottomColor: 'green',
-        },
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-                borderColor: 'red',
-            },
-            '&:hover fieldset': {
-                borderColor: 'yellow',
-            },
-            '&.Mui-focused fieldset': {
-                borderColor: 'green',
-            },
-        },
-    },
-})(TextField);
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    margin: {
-        margin: theme.spacing(1),
-    },
-}));
-
-function CustomizedInputs2(props) {
-    const classes = useStyles();
-    const [value, setValue] = React.useState('Customer');
-    function handleChange(e) {
-        setValue(e.target.value);
-        props.store.radioHandler(e.target.value)
-
-    }
-    const inputHandler = function (e) {
-        props.store.inputHandler(e.target.name, e.target.value)
-    }
-    const inputHandler2 = function () {
-        props.store.inputHandler2()
-    }
+import CustomInputList from '../utils/CustomInputList'
 
 
-    return (
-        <form className={classes.root} noValidate>
-            <Grid container spacing={2} container direction="column" style={{ width: "100vw" }} justify="center" alignItems="center">
-                <Typography variant="h6"><p></p> </Typography>
-                <Typography variant="h4"> Welcome to Handiler </Typography>
-                <Typography variant="h6">The best place to find a Technician/Handyman near you! </Typography>
-                <p>To signup, please provide the following:</p>
-                <FormLabel component="legend">Im signing up to Handiler as a:</FormLabel>
-                <RadioGroup aria-label="gender" name="gender1" className={classes.group} value={value} onChange={handleChange}>
-                    <FormControlLabel value="Customer" control={<Radio />} label="Customer" />
-                    <FormControlLabel value="Technician" control={<Radio />} label="Technician" />
-                </RadioGroup>
-                <Paper style={{ marginTop: "6vh", width: "60vw" }}>
-                    <Grid container spacing={8} style={{ height: "70vh" }} justify="center" alignItems="center">
-                        <CssTextField className={classes.margin} id="FirstName" name="firstName" value={props.store.firstName} onChange={inputHandler} label="First Name" />
-                        <CssTextField className={classes.margin} id="LastName" name="lastName" value={props.store.lastName} onChange={inputHandler} label="Last Name" />
-                        <CssTextField className={classes.margin} id="Password" type="password" name="password" value={props.store.password} onChange={inputHandler} label="Password" />
-                        <CssTextField className={classes.margin} id="Email" name="email" value={props.store.email} onChange={inputHandler} label="Email" />
-                        <CssTextField className={classes.margin} type="number" id="Phone Number" name="phoneNumber" value={props.store.phoneNumber} onChange={inputHandler} label="Phone Number" />
-                        <CssTextField className={classes.margin} id="City" name="city" value={props.store.city} onChange={inputHandler} label="City" />
-                        {value === "Customer" ? <CssTextField className={classes.margin} id="Address" name="address" value={props.store.address} onChange={inputHandler} label="Address" />
-                            : <CssTextField className={classes.margin} id="Proffession" name="proffession" value={props.store.proffession} onChange={inputHandler} label="Proffession" />
-                        }
-                    </Grid> </Paper>
-                <Typography variant="h6"><p></p> </Typography>
-
-                <Button variant="contained" color="secondary" onClick={inputHandler2}>SignUp</Button>
-            </Grid>
-        </form>
-    );
-}
-
-@inject('signUpStore')
+@inject("signUpStore")
 @observer
-class CustomizedInputs extends Component {
-    render() {
-        return (<CustomizedInputs2 store={this.props.signUpStore} />)
+class ClientSignUp extends Component {
+
+    signupOnClick = (a) => {
+        this.props.signUpStore.signup(a)
     }
 
+    componentDidMount = () => this.props.signUpStore.getCities()
+
+    render() {
+        const store = this.props.signUpStore;
+        const cityList = store.citiesList.map(c => {
+            return {value: c.cityNum, label: c.name}
+        })
+        return (
+            <Grid container style={{ width: "100vw" }} justify="center" alignItems="center">
+                <Grid item >
+                    <Grid container direction="column" justify="center" alignItems="center">
+                        <Typography variant="h4"> Welcome to Handiler</Typography>
+                        <Typography variant="h6">The best place to find a Technician !</Typography>
+                    </Grid>
+                    <Paper elevation={4} style={{ margin: "2vh", padding: "5vh", width: "50vw" }}>
+                        <Grid container justify="center" alignItems="center">
+                            <Grid item>
+                                <Typography variant="h4">Please provide the following</Typography>
+                            </Grid>
+                        </Grid>
+                        <Grid container spacing={8} justify="center" alignItems="center">
+                            <Grid item>
+                                <TextField label="First Name" />
+                            </Grid>
+                            <Grid item>
+                                <TextField label="Last Name" />
+                            </Grid>
+                            <Grid container justify="center" alignItems="center">
+                            <CustomInputList suggestions={cityList} placeholder="City" inputId="city-name" label="City" />
+                            </Grid>
+                            <Grid item>
+                                <TextField label="Email" />
+                            </Grid>
+                            <Grid item>
+                                <TextField label="Phone" />
+                            </Grid>
+                            <Grid item>
+                                <TextField label="Password" type="password" />
+                            </Grid>
+                        </Grid>
+                        <Grid container style={{ marginTop: "5vh" }} justify="center" alignItems="center">
+                            <Grid item>
+                                <Button variant="contained" color="primary" onClick={this.signupOnClick}>Confirm</Button>
+                            </Grid>
+                        </Grid>
+                    </Paper>
+                </Grid>
+            </Grid>
+        );
+    }
 }
-export default CustomizedInputs
+
+export default ClientSignUp;

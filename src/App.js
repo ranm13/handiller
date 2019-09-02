@@ -8,6 +8,7 @@ import ClientHome from './components/Clients/ClientHome';
 import Logo from './components/General/Logo';
 import ClientHomePage from './components/Clients/ClientHomePage';
 import ProfHomePage from './components/Pros/ProfHomePage';
+import ClientSignUp from './components/Signup/ClientSignUp';
 import Button from '@material-ui/core/Button';
 import ProfSettings from './components/Pros/ProfSettings';
 import { Grid } from '@material-ui/core';
@@ -42,11 +43,12 @@ class App extends Component {
           logInStore.isProf? <ProfHomePage />
           : null}
 
-          {logInStore.isClient? <Route exact path="/client/home" component={ClientHome} /> : <Redirect to="/"/>}
+          {/* {logInStore.isClient? <Route exact path="/client/home" component={ClientHome} /> : <Redirect to="/"/>}
           {logInStore.isClient? <Route exact path="/client/history" component={ClientHistory} /> : <Redirect to="/"/>}
           {logInStore.isClient? <Route exact path="/client/settings" component={ClientSettings} /> : <Redirect to="/"/>}
           {logInStore.isProf? <Route exact path="/prof/home" component={ProfHome} /> : <Redirect to="/"/>}
-          {logInStore.isProf? <Route exact path="/prof/settings" component={ProfSettings} /> : <Redirect to="/"/>}
+          {logInStore.isProf? <Route exact path="/prof/settings" component={ProfSettings} /> : <Redirect to="/"/>} */}
+          <Route exact path="/signup" component={ClientSignUp} />
         </div>
       </Router>
     );
