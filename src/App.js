@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button';
 import ProfSettings from './components/Pros/ProfSettings';
 import { Grid } from '@material-ui/core';
 import ProfHome from './components/Pros/ProfHome';
+import DevTools from 'mobx-react-devtools';
 
 @inject('logInStore')
 
@@ -21,7 +22,9 @@ class App extends Component {
     const logInStore = this.props.logInStore
     return (
       <Router>
+       
         <div className="App">
+   
           <Logo/>
 
           {!(logInStore.isClient || logInStore.isProf)?   
@@ -47,7 +50,9 @@ class App extends Component {
           {logInStore.isClient? <Route exact path="/client/settings" component={ClientSettings} /> : <Redirect to="/"/>}
           {logInStore.isProf? <Route exact path="/prof/home" component={ProfHome} /> : <Redirect to="/"/>}
           {logInStore.isProf? <Route exact path="/prof/settings" component={ProfSettings} /> : <Redirect to="/"/>}
+         
         </div>
+
       </Router>
     );
   }
