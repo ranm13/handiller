@@ -13,6 +13,7 @@ import ProfSettings from './components/Pros/ProfSettings';
 import { Grid } from '@material-ui/core';
 import ProfHome from './components/Pros/ProfHome';
 
+
 @inject('logInStore')
 
 @observer
@@ -23,7 +24,6 @@ class App extends Component {
       <Router>
         <div className="App">
           <Logo/>
-
           {!(logInStore.isClient || logInStore.isProf)?   
           <Grid container justify="center" alignItems="center" style={{height:"90vh"}} spacing={6}> 
             <Grid item>
