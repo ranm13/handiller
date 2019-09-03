@@ -12,14 +12,25 @@ class Settings extends Component {
     }
 
     render() {
+<<<<<<< HEAD
+        let personalData = this.props.clientStore.personalData
+        let gridContainer = {
+            width: "100vw",
+            height: "91.5vh",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundImage: "url('https://images.unsplash.com/photo-1505015920881-0f83c2f7c95e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60')"
+        }
+=======
         let personalDataInputs = this.props.clientStore.personalDataInputs
+>>>>>>> master
         return (
-            <Grid container style={{width: "100vw"}} justify="center" alignItems="center">
+            <Grid container style={ gridContainer } justify="center" alignItems="center">
                 <Grid item>
-                    <Paper style={{marginTop: "5vh", width: "50vw"}}>
-                        <Grid container style={{ height:"5vh"}} justify="center" alignItems="center">
-                            <Grid item>
-                                <Typography variant="h4">Update Personal Data</Typography>
+                    <Paper style={{ width:"50vw", opacity: "0.95" }}>
+                        <Grid container style={{ height:"14vh" }} justify="center" alignItems="center">
+                            <Grid item >
+                                <Typography variant="h4" style={{fontFamily: "'Montserrat', sans-serif", fontWeight: "bold"}}>Update Personal Data</Typography>
                             </Grid>
                         </Grid>
                         <Grid container spacing={8} style={{height:"70vh"}} justify="center" alignItems="center">
