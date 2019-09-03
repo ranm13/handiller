@@ -14,6 +14,7 @@ import { Grid } from '@material-ui/core';
 import ProfHome from './components/Pros/ProfHome';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import Iframe from 'react-iframe'
 
 const theme = createMuiTheme({
   palette: {
@@ -45,6 +46,7 @@ class App extends Component {
               <Button variant="contained" color="secondary"  onClick={logInStore.enterToProf} to='/prof/home' component={Link}>
                   Professional
               </Button>
+
             </Grid>  
           </Grid>  : null}
 
@@ -67,3 +69,9 @@ class App extends Component {
 
 export default App;
 
+{/* <Iframe url="https://www.google.com/maps/embed/v1/place?q=ramat%20gan%20shapira%2019&key=AIzaSyDqdsntoF7hsuKcC24uY7RsDGSeALpQnHM"
+width="450px"
+height="450px"
+
+display="initial"
+position="relative"/> */}
