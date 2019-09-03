@@ -38,7 +38,7 @@ export class ClientStore {
     }
 
     @action selectProfession = () => {
-        if (this.professionals.find(p => p==this.searchInput)) {
+        if (this.professionals.find(p => p === this.searchInput)) {
             this.chosenProfessional = this.searchInput
             this.searchPros()
         }

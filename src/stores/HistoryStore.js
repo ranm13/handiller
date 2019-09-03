@@ -1,7 +1,5 @@
 import { observable, action } from 'mobx'
 
-const axios = require('axios')
-
 export class HistoryStore {
     @observable pendingOpen = false
     @observable approvedOpen = false
