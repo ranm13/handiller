@@ -17,6 +17,7 @@ function NavBar() {
       <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary" centered>
         <Tab label="Home" to='/prof/home' component={Link} />
         <Tab label="Settings" to='/prof/settings' component={Link} />
+        <Tab label="Logout" to='/logout' component={Link}/>
       </Tabs>
       
     </Paper>

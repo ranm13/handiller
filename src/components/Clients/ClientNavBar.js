@@ -18,6 +18,7 @@ function NavBar() {
         <Tab label="Home" to='/client/home' component={Link} />
         <Tab label="History" to='/client/history' component={Link} />
         <Tab label="Settings" to='/client/settings' component={Link} />
+        <Tab label="Logout" to='/logout' component={Link}/>
       </Tabs>
     </Paper>
 

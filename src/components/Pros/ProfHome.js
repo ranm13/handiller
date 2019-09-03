@@ -10,7 +10,7 @@ import Requests from './Requests'
 class ProfHome extends Component {
 
     componentDidMount() {
-        this.props.professionalStore.getPersonalData(2)
+        this.props.professionalStore.getPersonalData(4)
       }
 
     render() {

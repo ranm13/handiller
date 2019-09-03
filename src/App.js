@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles/App.css';
-import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import ClientHistory from './components/Clients/ClientHistory';
 import ClientSettings from './components/Clients/ClientSettings';
 import ClientHome from './components/Clients/ClientHome';
@@ -12,6 +12,7 @@ import ProfSettings from './components/Pros/ProfSettings';
 import ProfHome from './components/Pros/ProfHome';
 import Login from './components/Login/Login';
 import Root from './components/Login/Root';
+import Logout from './components/Login/Logout';
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
           <Route exact path="/prof/settings" component={ProfSettings} />
           <Route exact path="/signup" component={ClientSignUp} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/logout" component={Logout} />
         </div>
       </Router>
     );

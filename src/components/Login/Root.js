@@ -1,38 +1,39 @@
 import React, { Component } from 'react';
 import '../../styles/App.css';
+import '../../styles/index.css';
 import { observer, inject } from 'mobx-react'
-import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom'
-import Button from '@material-ui/core/Button';
-import { Grid, TextField } from '@material-ui/core';
+import { Link, Redirect } from 'react-router-dom'
+import { Grid, Button } from '@material-ui/core';
+import Login from './Login';
 
 @inject('logInStore')
 @observer
 class Root extends Component {
 
-    inputHandler = e => this.props.logInStore.inputHandler(e.target.name, e.target.value)
+    login = () => {
+        const user = this.props.logInStore.user;
+        console.log(user)
+        if(user.isProf)
+            return <Redirect push to="/prof/home"/>
+        else
+            return <Redirect push to="/client/home"/>
+
+    }
 
     render() {
-        const store = this.props.logInStore;
+        const user = this.props.logInStore.user;
         return (
-            <div>
-                <Grid container justify="center" direction="column" alignItems="center" spacing={3}>
-                    <Grid item>
-                        <TextField name="email" label="Email" onChange={this.inputHandler} />
-                    </Grid>
-                    <Grid item>
-                        <TextField name="pass" label="Password" type="password"
-                            onChange={this.inputHandler} />
-                    </Grid>
-                    <Grid item>
-                        <Button variant="contained" color="primary"
-                            onClick={store.login}>Login</Button>
-                    </Grid>
-                    <Grid item>
-                        <Button variant="contained" color="primary"
-                            component={Link} to="/signup">Sign up</Button>
-                    </Grid>
+            <Grid id="app_root" container justify="center" alignItems="center" spacing={10}>
+                <Grid item>
+                    <Login />
                 </Grid>
-            </div>
+                <Grid item>
+                    <Button variant="contained" color="secondary"
+                        component={Link} to="/signup">Sign up</Button>
+                </Grid>
+
+                {user.isLogin ? this.login() : null}
+            </Grid>
         );
     }
 }
