@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-<<<<<<< HEAD
 import { Paper, Button, Typography, Grid } from '@material-ui/core'
-=======
-import { Paper, Button, Typography } from '@material-ui/core'
 
->>>>>>> master
 import moment from "moment"
 
 @inject('professionalStore')
