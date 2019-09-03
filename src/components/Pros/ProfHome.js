@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Grid } from '@material-ui/core'
 import CalendarComp from './CalendarComp'
 import Requests from './Requests'
-import { Calendar } from 'react-big-calendar';
+
 
 
 class ProfHome extends Component {
