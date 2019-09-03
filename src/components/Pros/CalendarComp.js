@@ -6,15 +6,8 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "moment";
 
 @inject( "professionalStore")
-
 @observer
-
-
 class CalendarComp extends Component { 
-
-  async componentDidMount() {
-    await this.props.professionalStore.getPersonalData(2)
-  }
 
   render() {
     const localizer = momentLocalizer(moment);

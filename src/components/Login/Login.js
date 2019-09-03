@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 
 class Login extends Component {
 
     render() {
         return (
             <div>
-                <Button variant="contained" color="primary" onClick={logInStore.enterToClient}>
-                    Client
-            </Button>
-                <Button variant="contained" color="secondary" onClick={logInStore.enterToProf}>
-                    Professional
-            </Button>
+                <div>Login</div>
             </div>
         );
     }

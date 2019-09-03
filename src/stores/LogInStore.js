@@ -1,22 +1,26 @@
 import { observable, action } from  'mobx'
+import axios from 'axios'
 
 export class LogInStore {
-    @observable emailInput = ""
-    @observable passwordInput = ""
-    @observable isClient = false
-    @observable isProf = false
+    @observable email = ""
+    @observable pass = ""
 
-    @action inputHandler = (name, value) => {
-        this[name] = value
-    } 
+    @action inputHandler = (name, value) => this[name] = value
 
-    @action enterToClient = () => {
-        this.isClient = true
+    @action login = async () => {
+        if(this.validation()){
+            const res = await axios.get(`http://localhost:5000/auth/login/${this.email}/${this.pass}`)
+            if(res.data){
+                //Move to to login with the right id
+            }
+
+        }
     }
 
-    @action enterToProf = () => {
-        this.isProf = true
+    @action validation = () => {
+        return true
     }
+
 }   
 
 

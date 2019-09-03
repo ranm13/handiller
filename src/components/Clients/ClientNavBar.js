@@ -12,16 +12,15 @@ function NavBar() {
   }
 
   return (
-    
+
     <Paper className="nav-bar">
       <Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary" centered>
         <Tab label="Home" to='/client/home' component={Link} />
         <Tab label="History" to='/client/history' component={Link} />
         <Tab label="Settings" to='/client/settings' component={Link} />
       </Tabs>
-      
     </Paper>
-    
+
   )
 }
 

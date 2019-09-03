@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const clientRoute = require('./server/routes/client')
 const profRoute = require('./server/routes/prof')
 const generalRoute = require('./server/routes/general')
+const authRoute = require('./server/routes/auth')
 
 
 app.use(bodyParser.json())
@@ -19,6 +20,8 @@ app.use(function (req, res, next) {
 app.use('/client',clientRoute)
 app.use('/prof',profRoute)
 app.use('/general',generalRoute)
+app.use('/auth',authRoute)
+
 
 
 const port = 5000
