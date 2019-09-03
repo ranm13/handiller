@@ -11,16 +11,18 @@ class Requests extends Component {
     render() {
         let professionalStore = this.props.professionalStore
         let gridStyle = {
-            width: "19vw",
-            margin: "1vh 1vw",
+            // width: "19vw",
+            width: "90%",
+            margin: "1vh 0",
             backgroundPosition: "center",
             border: "3px solid black",
-            minHeight: "85vh",
+            // minHeight: "85vh",
+            minHeight: "100%",
             backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZNXvrGp5i2BF7egN74smoAktTy3FYexghhOZwolHRrJXRArzYUQ')"
         }
 
         return (
-            <Grid container spacing={2} container direction="column" justify="flex-start" alignItems="center" style={ gridStyle } >
+            <Grid container spacing={2} direction="column" justify="flex-start" alignItems="center" style={ gridStyle } >
                 {
                     professionalStore.pendingRequests.map(i =>
                         <Grid item key={i.appointmentId} >

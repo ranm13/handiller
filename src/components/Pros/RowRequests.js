@@ -48,7 +48,7 @@ class RowRequests extends Component {
         console.log(appointmentData)
         return (
             <div>
-                <Paper key={this.props.key} style={rowRequestStyle}>
+                <Grid key={this.props.key} style={rowRequestStyle}>
                     <Typography style={typographyStyle} variant="h5">{appointmentData.clientName}</Typography>
                     <Typography style={typographyStyle} >{appointmentData.title}</Typography>
                     <Typography style={typographyStyle}>{moment(appointmentData.startDate).format('L')}</Typography>
@@ -59,7 +59,7 @@ class RowRequests extends Component {
                             <Button style={{ ...buttonStyle, margin: "0.5vw" }} variant="contained" color="secondary" onClick={this.handleOpen} >DECLINE</Button>
                         </Grid>
                     </Grid>
-                </Paper>
+                </Grid>
             </div>)
     }
 }
