@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
+<<<<<<< HEAD
 import { Paper, Button, Typography, Grid } from '@material-ui/core'
+=======
+import { Paper, Button, Typography } from '@material-ui/core'
+
+>>>>>>> master
 import moment from "moment"
 
 @inject('professionalStore')
@@ -18,6 +23,10 @@ class RowRequests extends Component {
             title: appointmentData.title
         }
         this.props.professionalStore.changeStatusRequest(this.props.appointmentData.appointmentId, data)
+        setTimeout(() => {
+              const todayButton = document.querySelector('.rbc-btn-group').firstChild;
+              todayButton.click()
+          }, 100) 
     }
 
     render() {

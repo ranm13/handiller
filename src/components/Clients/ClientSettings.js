@@ -6,7 +6,13 @@ import { Paper, Grid, Button, TextField, Typography } from '@material-ui/core'
 
 @observer
 class Settings extends Component {
+
+    inputHandler = (e) =>{
+        this.props.clientStore.settingsInputHandler(e.target.name, e.target.value)
+    }
+
     render() {
+<<<<<<< HEAD
         let personalData = this.props.clientStore.personalData
         let gridContainer = {
             width: "100vw",
@@ -15,6 +21,9 @@ class Settings extends Component {
             backgroundSize: "cover",
             backgroundImage: "url('https://images.unsplash.com/photo-1505015920881-0f83c2f7c95e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60')"
         }
+=======
+        let personalDataInputs = this.props.clientStore.personalDataInputs
+>>>>>>> master
         return (
             <Grid container style={ gridContainer } justify="center" alignItems="center">
                 <Grid item>
@@ -26,27 +35,27 @@ class Settings extends Component {
                         </Grid>
                         <Grid container spacing={8} style={{height:"70vh"}} justify="center" alignItems="center">
                             <Grid item>
-                                <TextField label="First Name" defaultValue={personalData.firstName}/>
+                                <TextField label="First Name" name={"firstName"} defaultValue={personalDataInputs.firstName} onChange={this.inputHandler}/>
                             </Grid>
                             <Grid item>
-                                <TextField label="Last Name" defaultValue={personalData.lastName}  />
+                                <TextField label="Last Name" name={"lastName"} defaultValue={personalDataInputs.lastName}  onChange={this.inputHandler}/>
                             </Grid>
                             <Grid item>
-                                <TextField label="Email" defaultValue={personalData.email} />
+                                <TextField label="Email" name={"email"} defaultValue={personalDataInputs.email} onChange={this.inputHandler}/>
                             </Grid>
                             <Grid item>
-                                <TextField  label="Phone" defaultValue={personalData.phone} />
+                                <TextField  label="Phone" name={"phone"} defaultValue={personalDataInputs.phone} onChange={this.inputHandler}/>
                             </Grid>
                             <Grid item>
-                                <TextField  label="Password" type="password" /> 
+                                <TextField  label="Password" name={"password"} type="password" onChange={this.inputHandler}/> 
                             </Grid>
                             <Grid item>
-                                <TextField  label="City" defaultValue={personalData.city} /> 
+                                <TextField  label="City" name={"city"} defaultValue={personalDataInputs.city} onChange={this.inputHandler}/> 
                             </Grid>
                         </Grid>
                         <Grid container style={{ height:"15vh"}} justify="center" alignItems="center">
                             <Grid item>
-                                <Button variant="contained" color="primary" onClick={this.handleOpen}>APPROVE Changes</Button>
+                                <Button variant="contained" color="primary" onClick={this.props.clientStore.updatePersonalData}>APPROVE Changes</Button>
                             </Grid>
                         </Grid>
                     </Paper>
