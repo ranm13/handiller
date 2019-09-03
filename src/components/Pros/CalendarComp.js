@@ -3,6 +3,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar'
 import { observer, inject } from 'mobx-react'
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "moment";
+import { Modal, Grid, Paper, Button } from "@material-ui/core";
 
 @inject( "professionalStore")
 
@@ -16,16 +17,36 @@ class CalendarComp extends Component {
     }, 100) 
   }
 
+  onSelectEvent = (event) => {
+    console.log(event)
+    this.props.professionalStore.handleModalOpening()
+  }
+
   render() {
     const localizer = momentLocalizer(moment);
+    const professionalStore = this.props.professionalStore
     return (
-          <Calendar
+      <React.Fragment>
+        <Calendar
           defaultDate={new Date()} 
-          events={this.props.professionalStore.approvedRequsets}
+          events={professionalStore.approvedRequsets}
           localizer={localizer}
           defaultView="month"
           resizable
+          onSelectEvent = {this.onSelectEvent}
           style={{ height: "80vh" }}/>
+        <Modal open={professionalStore.isModalOpen}>
+          <Grid container justify="center" alignItems="center" style={{height: "100vh"}}>
+            <Grid item>
+              <Paper  style={{ width: 400}}>
+                hi
+                <Button onClick={professionalStore.handleModalOpening}>X</Button>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Modal>
+      </React.Fragment>
+
     );
   }
 }

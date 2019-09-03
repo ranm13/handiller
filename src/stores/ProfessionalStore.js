@@ -6,6 +6,7 @@ export class ProfessionalStore {
     @observable personalData
     @observable allRequests = []
     @observable personalDataInputs = {}
+    @observable isModalOpen = false
 
     @computed get pendingRequests(){
         return this.allRequests.filter(a => a.appointmentStatus === "pending")
@@ -49,4 +50,7 @@ export class ProfessionalStore {
         // await axios.put(`http://localhost:5000/general/settings/${id}?isClient=false`, this.personalDataInputs)
     }
 
+    @action handleModalOpening = () => {
+        this.isModalOpen = !this.isModalOpen
+    }
 }
