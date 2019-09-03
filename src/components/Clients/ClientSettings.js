@@ -16,7 +16,8 @@ class Settings extends Component {
         let personalData = this.props.clientStore.personalData
         let gridContainer = {
             width: "100vw",
-            height: "91.5vh",
+            height: "91.2vh",
+            margin: "0.3vh 0",
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundImage: "url('https://images.unsplash.com/photo-1505015920881-0f83c2f7c95e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60')"
@@ -33,7 +34,7 @@ class Settings extends Component {
                                 <Typography variant="h4" style={{fontFamily: "'Montserrat', sans-serif", fontWeight: "bold"}}>Update Personal Data</Typography>
                             </Grid>
                         </Grid>
-                        <Grid container spacing={8} style={{height:"70vh"}} justify="center" alignItems="center">
+                        <Grid container spacing={8} style={{height:"65vh"}} justify="center" alignItems="center">
                             <Grid item>
                                 <TextField label="First Name" name={"firstName"} defaultValue={personalDataInputs.firstName} onChange={this.inputHandler}/>
                             </Grid>

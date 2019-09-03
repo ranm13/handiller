@@ -15,12 +15,14 @@ class History extends Component {
 
     render() {
         let clientHistoryStyle = {
-            padding: "8vh 1vw 1vh 1vw",
+            padding: "2vh 1vw 1vh 1vw",
             width: "98%",
-            height: "91.5vh",
-            margin: "auto",
+            height: "100vh",
+            margin: "0.3vh auto",
             backgroundPosition: "center",
-            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "auto",
+            backgroundAttachment: "fixed",
             backgroundColor: "transparent",
             backgroundImage: `url('https://images.unsplash.com/photo-1497993950456-cdb57afd1cf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60')`
         }

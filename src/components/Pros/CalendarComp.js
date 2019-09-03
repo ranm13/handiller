@@ -25,7 +25,7 @@ class CalendarComp extends Component {
           localizer={localizer}
           defaultView="month"
           resizable
-          style={{ height: "80vh" }}/>
+          style={{ height: "78vh" }}/>
     );
   }
 }
