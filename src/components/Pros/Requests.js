@@ -11,13 +11,11 @@ class Requests extends Component {
     render() {
         let professionalStore = this.props.professionalStore
         let gridStyle = {
-            // width: "19vw",
             width: "90%",
             margin: "1vh 0",
             backgroundPosition: "center",
             border: "3px solid black",
-            // minHeight: "85vh",
-            minHeight: "100%",
+            minHeight: "83vh",
             backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZNXvrGp5i2BF7egN74smoAktTy3FYexghhOZwolHRrJXRArzYUQ')"
         }
 

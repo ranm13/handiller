@@ -9,7 +9,7 @@ import ResultsTable from './ResultsTable';
 class Home extends Component {
     render() {
         return (  
-                <div className="home">
+                <div className="client-home">
                     <Requests />
                     <CustomInput />
                     <ResultsTable />     
