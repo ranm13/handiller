@@ -12,7 +12,7 @@ class Settings extends Component {
     }
 
     render() {
-<<<<<<< HEAD
+
         let personalData = this.props.clientStore.personalData
         let gridContainer = {
             width: "100vw",
@@ -21,9 +21,9 @@ class Settings extends Component {
             backgroundSize: "cover",
             backgroundImage: "url('https://images.unsplash.com/photo-1505015920881-0f83c2f7c95e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60')"
         }
-=======
+
         let personalDataInputs = this.props.clientStore.personalDataInputs
->>>>>>> master
+
         return (
             <Grid container style={ gridContainer } justify="center" alignItems="center">
                 <Grid item>
