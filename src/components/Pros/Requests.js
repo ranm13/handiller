@@ -11,7 +11,8 @@ class Requests extends Component {
     render() {
         let professionalStore = this.props.professionalStore
         let gridStyle = {
-            width: "23vw",
+            width: "19vw",
+            margin: "1vh 1vw",
             backgroundPosition: "center",
             border: "3px solid black",
             minHeight: "85vh",

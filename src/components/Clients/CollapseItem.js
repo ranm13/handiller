@@ -12,6 +12,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
 
@@ -30,18 +31,18 @@ class CollapseItem extends Component {
         let text = this.props.text
         let headers = ["Name", "Profession", "Date", "From", "To", ""]
         return (
-            <div>
-                <ListItem button onClick={this.handleClick}>
-                    <ListItemText 
+            <Grid >
+                <ListItem button onClick={this.handleClick} >
+                    <ListItemText
                         primary={<Typography type="body2" style={{ color: '#0b8e42', fontFamily: "'Montserrat', sans-serif", fontWeight: "bold" }}>{this.props.text}</Typography>}
                     />
                     {historyStore[this.props.toObserve] ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
-                <Collapse in={historyStore[this.props.toObserve]} timeout="auto" unmountOnExit>
+                <Collapse in={historyStore[this.props.toObserve]} timeout="auto" unmountOnExit >
                     <Table>
                         <TableHead component="div" disablePadding>
                             <TableRow>
-                                {headers.map(h => <TableCell style={{fontSize: "1em"}}>{h}</TableCell>)}
+                                {headers.map(h => <TableCell style={{ fontSize: "1.1em"}}>{h}</TableCell>)}
                             </TableRow>
                         </TableHead>
                         <TableBody component="div" disablePadding>
@@ -52,7 +53,8 @@ class CollapseItem extends Component {
                         </TableBody>
                     </Table>
                 </Collapse>
-            </div>)
+            </Grid>
+        )
     }
 }
 export default CollapseItem
