@@ -11,12 +11,14 @@ const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
 
 router.get("/professionals", async function (req, res) {
 
-    let query = `SELECT Profession FROM professions`
+    let query = `SELECT * FROM professions`
 
     let queryRes = await sequelize.query(query);
     queryRes = queryRes[0];
 
-    const professions = queryRes.map(p => p.Profession)
+    const professions = queryRes.map(p => {
+        return {profName: p.Profession, profId: p.id}
+        })
 
     res.send(professions)
 })
@@ -31,13 +33,14 @@ router.get("/appointments/:id", async function (req, res) {
         fieldToSearch = "appointments.client_id"
 
 
-    let query = `SELECT DISTINCT appointments.id, appointments.status, appointments.start_date, appointments.end_date, appointments.title, clients.first_name as client_name, professionals.first_name as prof_name, professions.Profession as profession
-    FROM appointments, clients, professionals, professions
+    let query = `SELECT DISTINCT appointments.id, appointments.status, appointments.start_date, appointments.end_date, appointments.title, clients.first_name as client_name, professionals.first_name as prof_name, professions.Profession as profession, clients.address as client_address, cities.name as city_name
+    FROM appointments, clients, professionals, professions, users, cities
     WHERE 
     ${fieldToSearch}=${id} AND
     clients.id = appointments.client_id AND
     professionals.id = appointments.professional_id AND
-    professions.id = professionals.profession_id
+    professions.id = professionals.profession_id AND
+    cities.id = clients.city_id
     `
 
     let queryRes = await sequelize.query(query);
@@ -53,7 +56,9 @@ router.get("/appointments/:id", async function (req, res) {
             profId: appoint.professional_id,
             profName: appoint.prof_name,
             clientName: appoint.client_name,
-            profession: appoint.profession
+            profession: appoint.profession,
+            clientCity: appoint.city_name,
+            clientAddress: appoint.client_address
         }
     })
 
@@ -62,23 +67,27 @@ router.get("/appointments/:id", async function (req, res) {
 })
 
 router.get("/cities", async function (req, res) {
-    let query = `SELECT name FROM cities`
+    let query = `SELECT * FROM cities`
 
     let queryRes = await sequelize.query(query);
     queryRes = queryRes[0];
 
-    const cities = queryRes.map(c => c.name)
+    const cities = queryRes.map(c => {
+        return { name: c.name, cityNum: c.id }
+    })
+
+    console.log(cities);
 
     res.send(cities)
 })
 
 router.get("/regions", async function (req, res) {
-    let query = `SELECT name FROM areas`
+    let query = `SELECT * FROM areas`
 
     let queryRes = await sequelize.query(query);
     queryRes = queryRes[0];
 
-    const areas = queryRes.map(a => a.name)
+    const areas = queryRes.map(a => { return { name: a.name, id: a.id } })
 
     res.send(areas)
 })

@@ -6,7 +6,6 @@ import moment from "moment";
 import { Modal, Grid, Paper, Button } from "@material-ui/core";
 
 @inject( "professionalStore")
-
 @observer
 class CalendarComp extends Component { 
   async componentDidMount() {

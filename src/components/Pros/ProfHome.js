@@ -1,16 +1,24 @@
 import React, { Component } from 'react'
+import { observer, inject } from 'mobx-react'
 import { Grid } from '@material-ui/core'
 import CalendarComp from './CalendarComp'
 import Requests from './Requests'
 
 
-
+@observer
+@inject("professionalStore")
+@inject('logInStore')
 class ProfHome extends Component {
+
+    componentDidMount() {
+        this.props.professionalStore.getPersonalData(this.props.logInStore.userId)
+      }
+
     render() {
         return (
-            <Grid container spacing={2} style={{margin: "1.5vh 0.1vw"}}>
+            <Grid container spacing={1} >
                 <Grid item xs={9}>
-                  <CalendarComp />
+                    <CalendarComp />
                 </Grid>
                 <Grid item xs={3}> 
                     <Requests /> 
