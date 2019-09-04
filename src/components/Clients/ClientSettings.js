@@ -13,7 +13,7 @@ class Settings extends Component {
 
     render() {
 
-        let personalData = this.props.clientStore.personalData
+
         let gridContainer = {
             width: "100vw",
             height: "91.2vh",
