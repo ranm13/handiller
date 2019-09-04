@@ -5,7 +5,6 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "moment";
 
 @inject( "professionalStore")
-
 @observer
 class CalendarComp extends Component { 
   async componentDidMount() {

@@ -16,7 +16,6 @@ class ResultsTable extends Component {
     render() {
         let searchResults = this.props.clientStore.searchResults
         let searchResultsHeaders = ["Name", "Email", "Phone", "Profession", "Description", ""]
-        console.log(this.props.clientStore)
         return (
             <div>
                 {searchResults ?
