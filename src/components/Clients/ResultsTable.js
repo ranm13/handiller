@@ -19,9 +19,9 @@ class ResultsTable extends Component {
         return (
             <div>
                 {searchResults ?
-                    <Paper>
+                    <Paper style={{width: "98%", margin: "auto", marginTop:"2vh"}}>
                         < Table >
-                            <TableHead>
+                            <TableHead >
                                 <TableRow>
                                     {searchResultsHeaders.map(h => <TableCell style={{fontSize: "1em"}}>{h}</TableCell>)}
                                 </TableRow>

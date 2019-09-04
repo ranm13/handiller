@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import { observer, inject } from 'mobx-react';
 import moment from 'moment';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import  Button  from '@material-ui/core/Button';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+
 
 @inject("clientStore")
 @observer
@@ -24,18 +25,20 @@ class CollapseRow extends Component {
         let appointmentData = this.props.appointmentData;
         const startDate = moment(appointmentData.startDate).format('L');
         return (
-            <ListItem>
-                <ListItemText primary={appointmentData.profName} />
-                <ListItemText primary={appointmentData.profession} />
-                <ListItemText primary={startDate} />
-                <ListItemText primary={moment(appointmentData.startDate).format('LT')} />
-                <ListItemText primary={moment(appointmentData.endDate).format('LT')} />
+            <TableRow>
+                <TableCell >{appointmentData.profName}</TableCell>
+                <TableCell >{appointmentData.profession}</TableCell>
+                <TableCell >{startDate}</TableCell>
+                <TableCell >{moment(appointmentData.startDate).format('LT')} </TableCell>
+                <TableCell >{moment(appointmentData.endDate).format('LT')}</TableCell>
+                <TableCell>
                 {(text === "Pending" || text === "Approved")?
                     <Button variant="contained" color="secondary" onClick={this.cancelAppointment}>
                         Cancel Appointment
                     </Button>
                     : null }
-            </ListItem>
+                    </TableCell>
+            </TableRow>
         )
     }
 }

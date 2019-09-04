@@ -10,16 +10,24 @@ class ProfSettings extends Component {
     }
     render() {
         let personalData = this.props.professionalStore.personalData
+        let gridContainer = {
+            width: "100vw",
+            height: "91vh",
+            margin: "0.3vh 0",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundImage: "url('https://i2.nicepik.com/files/892/240/987/tools-set-handyman-hand.jpg')"
+        }
         return (
-            <Grid container style={{width: "100vw"}} justify="center" alignItems="center">
+            <Grid container style={ gridContainer } justify="center" alignItems="center">
                 <Grid item>
-                    <Paper style={{marginTop: "5vh", width: "60vw"}}>
-                        <Grid container style={{height:"5vh"}} justify="center" alignItems="center">
+                    <Paper style={{ width: "60vw", opacity: "0.95"}}>
+                        <Grid container style={{height:"14vh"}} justify="center" alignItems="center">
                             <Grid item>
-                                <Typography variant="h4">Update Personal Data</Typography>
+                                <Typography variant="h4" style={{fontFamily: "'Montserrat', sans-serif", fontWeight: "bold"}}>Update Personal Data</Typography>
                             </Grid>
                         </Grid>
-                        <Grid container spacing={8} style={{height:"70vh"}} justify="center" alignItems="center">
+                        <Grid container spacing={8} style={{height:"65vh"}} justify="center" alignItems="center">
                             <Grid item>
                                 <TextField label="First Name" name={"firstName"} defaultValue={personalData.firstName} onChange={this.inputHandler}/>
                             </Grid>

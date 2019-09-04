@@ -1,8 +1,9 @@
-import xButton from './img/xButton3.png'
+// import xButton from './img/xButton3.png'
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 import Date from '../General/Date'
 import { observer, inject } from 'mobx-react'
+import { Modal, Grid, Typography, Button, Paper, IconButton, TextField } from '@material-ui/core'
+import CancelIcon from '@material-ui/icons/Cancel';
 const moment = require('moment')
 
 @inject('clientStore')
@@ -33,7 +34,6 @@ class ClientPopUp extends Component {
     await this.setState({ profId, appointmentStatus, clientId })
     this.handleClose()
     this.props.clientStore.createAppointment(this.state)
-    console.log(this.state)
   }
 
   handleClose = async () => {
@@ -51,21 +51,45 @@ class ClientPopUp extends Component {
     await this.setState({ title })
   }
 
-  // handleCancel = async () => {
-  //   await 
-  // }
-
   render() {
+    let popUp = this.props.popUp
+    let popUpStyle = {
+      width: "20vw",
+      backgroundColor: "rgb(255, 255, 255)",
+      padding: "0 0 1em 1em",
+      fontFamily: `'Montserrat', sans-serif`,
+      fontSize: "1em",
+      border: "2px solid rgb(78, 77, 77)",
+      boxShadow: "2px 2px rgb(37, 37, 37)",
+      borderRadius: "6px",
+      alignContent: "center",
+      color: "rgb(19, 19, 19)"
+    }
 
-    console.log(this.props.result)
+    let headerStyle = {
+      fontFamily: `'Montserrat', sans-serif`,
+      fontWeight: "bold",
+      margin: "1em 0"
+    }
+
     return (
-      <div className="pop-up">
-        <div className="pop-up-header">Appointment with {this.props.result.firstName}:</div>
-        <div className="pop-up-date"><Date handleDateChange={this.handleDateChange} /></div>
-        <div className="pop-up-title"><input type="text" className="pop-up-title-input" name="lastname" placeholder="What's wrong..." onChange={this.handleTitleChange} /></div>
-        <button className="pop-up-button" style={{backgroundColor:"#3f51b5"}} onClick={this.handleClick}>CONFIRM</button>
-        <img className="pop-up-xButton" src={xButton} onClick={this.props.handleClose} />
-      </div>
+      <Modal open={popUp} >
+        <Grid container justify="center" alignItems="center" style={{ height: "100vh" }} >
+          <Paper style={popUpStyle} >
+            <IconButton style={{ float: "right" }} onClick={this.props.handleClose} >
+              <CancelIcon />
+            </IconButton>
+            <Typography style={headerStyle}>Appointment with {this.props.result.firstName}:</Typography>
+            <Date handleDateChange={this.handleDateChange} />
+            <Typography >
+            <TextField label="What's wrong?" onChange={this.handleTitleChange} margin="normal" autoFocus={true} style={{ width: "240px"}}/>
+          </Typography>
+            <Grid container justify="center" alignItems="center" >
+              <Button style={{float: "right", marginTop: "1em"}} variant="contained" color="primary" onClick={this.handleClick}>CONFIRM</Button>
+            </Grid>
+          </Paper>
+        </Grid>
+      </Modal>
     );
   }
 }

@@ -13,10 +13,22 @@ import Login from './components/Login/Login';
 import Root from './components/Login/Root';
 import Logout from './components/Login/Logout';
 import Signup from './components/Login/Signup';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import Iframe from 'react-iframe'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#0b8e42' },
+    secondary: { main: '#c0392b' },
+  },
+});
+
 
 class App extends Component {
   render() {
     return (
+      <ThemeProvider theme={theme}>
       <Router>
         <div className="App">
           <Logo/>
@@ -34,9 +46,16 @@ class App extends Component {
           <Route exact path="/logout" component={Logout} />
         </div>
       </Router>
+      </ThemeProvider>
     );
   }
 }
 
 export default App;
 
+{/* <Iframe url="https://www.google.com/maps/embed/v1/place?q=ramat%20gan%20shapira%2019&key=AIzaSyDqdsntoF7hsuKcC24uY7RsDGSeALpQnHM"
+width="450px"
+height="450px"
+
+display="initial"
+position="relative"/> */}
