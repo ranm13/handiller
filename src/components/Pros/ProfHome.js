@@ -11,7 +11,7 @@ import Requests from './Requests'
 class ProfHome extends Component {
 
     componentDidMount() {
-        this.props.professionalStore.getPersonalData(this.props.logInStore.user.userId)
+        this.props.professionalStore.getPersonalData(this.props.logInStore.userId)
       }
 
     render() {

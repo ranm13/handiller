@@ -13,6 +13,8 @@ export class LogInStore {
 
     @action inputHandler = (name, value) => this.user[name] = value
 
+    @action setUserId = (userId) => this.userId = userId;
+
     @action login = async () => {
 
         if(this.validation()){

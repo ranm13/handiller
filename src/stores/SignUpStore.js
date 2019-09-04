@@ -4,6 +4,8 @@ import axios from 'axios'
 export class SignUpStore {
     @observable userData = {}
     @observable isProf = false;
+    @observable isFinishSignup = false;
+    @observable userId = 0;
     @observable regions = {};
     @observable proffessionsList = [];
     @observable citiesList = []
@@ -13,9 +15,16 @@ export class SignUpStore {
 
     @action setProffesional = isChecked => this.isProf = isChecked
 
-    @action changeArea = (name, isChecked, regNum) => { 
+    @action changeArea = (name, isChecked, regNum) => {
         const regId = Number(regNum)
-        this.regions[name] = {isChecked, regId}
+        this.regions[name] = { isChecked, regId }
+    }
+
+    @action restartSignup = () => {
+        this.userData = {}
+        this.isProf = false;
+        this.isFinishSignup = false;
+        this.regions = {};
     }
 
     getRegionArr = () => {
@@ -23,19 +32,23 @@ export class SignUpStore {
         for (let region in this.regions)
             if (this.regions[region].isChecked)
                 profRegion.push(this.regions[region].regId)
-            
+
         return profRegion
     }
 
-    @action signup = () => {
+    @action signup = async () => {
         if (this.validation()) {
             if (this.isProf) {
                 const profRegion = this.getRegionArr();
                 this.userData.regions = profRegion;
-                axios.post('http://localhost:5000/prof/signup', this.userData)
+                const res = await axios.post('http://localhost:5000/prof/signup', this.userData);
+                this.userId = res.data.userId
             }
-            else
-                axios.post('http://localhost:5000/client/signup', this.userData)
+            else {
+                const res = await axios.post('http://localhost:5000/client/signup', this.userData)
+                this.userId = res.data.userId
+            }
+            this.isFinishSignup = true
         }
     }
 

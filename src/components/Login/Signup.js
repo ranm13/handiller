@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Paper, Grid, Button, Typography } from '@material-ui/core'
 import { observer, inject } from 'mobx-react'
+import { Link, Redirect } from 'react-router-dom'
 import ClientSignUp from './ClientSignUp';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -8,6 +9,7 @@ import ProfSignUp from './ProfSignUp';
 
 
 @inject("signUpStore")
+@inject("logInStore")
 @observer 
 class Signup extends Component {
 
@@ -21,10 +23,23 @@ class Signup extends Component {
         this.props.signUpStore.isProf = false;
     }
 
+    login = () => {
+        this.props.logInStore.setUserId(this.props.signUpStore.userId);
+        
+        if(this.props.signUpStore.isProf){
+            this.props.signUpStore.restartSignup();
+            return <Redirect push to="/prof/home"/>
+        }
+        else{
+            this.props.signUpStore.restartSignup();
+            return <Redirect push to="/client/home"/>
+        }
+    }
+
     setProffesional = e => this.props.signUpStore.setProffesional(e.target.checked)
 
     render() {
-
+        console.log(this.props.signUpStore)
         return (
             <Grid container justify="center" alignItems="center">
                 <Grid item >
@@ -65,6 +80,7 @@ class Signup extends Component {
                                     onClick={this.signupOnClick}>Confirm</Button>
                             </Grid>
                         </Grid>
+                        {this.props.signUpStore.isFinishSignup ? this.login(): null}
                     </Paper>
                 </Grid>
             </Grid>

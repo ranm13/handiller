@@ -35,7 +35,7 @@ router.post("/signup", async function (req, res) {
         await sequelize.query(queryRegion);
     }
 
-    res.end()
+    res.send({userId:authId[0]})
 })
 
 router.get("/details/:profId", async function (req, res) {

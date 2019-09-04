@@ -24,7 +24,7 @@ router.post("/signup", async function (req, res) {
             ${Number(d.cityNum)});`
 
     await sequelize.query(queryClients)
-    res.end()
+    res.send({userId: authId[0]})
 })
 
 router.get("/details/:clientId", async function (req, res) {

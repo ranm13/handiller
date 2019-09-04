@@ -38,7 +38,6 @@ export class ClientStore {
     }
 
     @action selectProfession = () => {
-        console.log(this.professionals)
         if (this.professionals.find(p => p.profName===this.searchInput)) {
             this.chosenProfessional = this.searchInput
             this.searchPros()

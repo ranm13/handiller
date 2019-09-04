@@ -11,7 +11,7 @@ class ClientHome extends Component {
 
     componentDidMount = () => {
         this.props.clientStore.getProfessionalsList()
-        this.props.clientStore.getPersonalData(this.props.logInStore.user.userId)
+        this.props.clientStore.getPersonalData(this.props.logInStore.userId)
     }
 
     render() {
