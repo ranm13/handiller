@@ -11,6 +11,7 @@ import Requests from './Requests'
 class ProfHome extends Component {
 
     componentDidMount() {
+        console.log(this.props.logInStore.userId)
         this.props.professionalStore.getPersonalData(this.props.logInStore.userId)
       }
 

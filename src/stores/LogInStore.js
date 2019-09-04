@@ -10,6 +10,7 @@ export class LogInStore {
         isProf: false,
         isLogin: false
     }
+    @observable userId = 0;
 
     @action inputHandler = (name, value) => this.user[name] = value
 
@@ -23,7 +24,7 @@ export class LogInStore {
 
             if(resUser.isValid){
                 this.user.isProf = resUser.isProf === 1;
-                this.user.userId = resUser.userId;
+                this.userId = resUser.userId;
                 this.user.isLogin = true;
             }         
         }
