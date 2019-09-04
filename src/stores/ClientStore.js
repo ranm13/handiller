@@ -18,6 +18,7 @@ export class ClientStore {
     }
 
     @action getPersonalData = async (id) => {
+        console.log(id)
         const res = await axios.get(`http://localhost:5000/client/details/${id}`)
         this.personalData = res.data;
         this.personalDataInputs = this.personalData
@@ -47,6 +48,7 @@ export class ClientStore {
     @action searchPros = async () => {
         const res = await axios.get(`http://localhost:5000/client/searchProfs/${this.chosenProfessional}/${this.personalData.region}`)
         this.searchResults = [...res.data]     
+        console.log(res.data)
     }
     
     @action createAppointment = async (appointment) => {

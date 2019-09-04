@@ -53,9 +53,3 @@ class App extends Component {
 
 export default App;
 
-{/* <Iframe url="https://www.google.com/maps/embed/v1/place?q=ramat%20gan%20shapira%2019&key=AIzaSyDqdsntoF7hsuKcC24uY7RsDGSeALpQnHM"
-width="450px"
-height="450px"
-
-display="initial"
-position="relative"/> */}
