@@ -2,83 +2,75 @@ import { observable, action } from 'mobx'
 import axios from 'axios'
 
 export class SignUpStore {
-    @observable firstName
-    @observable lastName
-    @observable email
-    @observable phoneNumber
-    @observable address
-    @observable password
-    @observable city
-    @observable isProfessional = false
-    @observable proffession
+    @observable userData = {}
+    @observable isProf = false;
+    @observable isFinishSignup = false;
+    @observable userId = 0;
+    @observable regions = {};
+    @observable proffessionsList = [];
     @observable citiesList = []
-    @observable areasInput = []
     @observable areasList = []
 
+    @action inputHandler = (name, value) => this.userData[name] = value
 
-    @action inputHandler = (name, value) => {
-        this[name] = value
-        console.log(name + " " + value)
+    @action setProffesional = isChecked => this.isProf = isChecked
+
+    @action changeArea = (name, isChecked, regNum) => {
+        const regId = Number(regNum)
+        this.regions[name] = { isChecked, regId }
     }
-    @action inputHandler2 = () => {
-        let SignupObject
-        this.isProfessional ? SignupObject =
-            {
-                isProfessional: this.isProfessional,
-                firstName: this.firstName,
-                lastName: this.lastName,
-                email: this.email,
-                phoneNumber: this.phoneNumber,
-                password: this.password,
-                city: this.city,
-                proffession: this.proffession
-            } :
-            SignupObject = {
-                isProfessional: this.isProfessional,
-                firstName: this.firstName,
-                lastName: this.lastName,
-                email: this.email,
-                phoneNumber: this.phoneNumber,
-                password: this.password,
-                city: this.city,
-                address: this.address
+
+    @action restartSignup = () => {
+        this.userData = {}
+        this.isProf = false;
+        this.isFinishSignup = false;
+        this.regions = {};
+    }
+
+    getRegionArr = () => {
+        const profRegion = [];
+        for (let region in this.regions)
+            if (this.regions[region].isChecked)
+                profRegion.push(this.regions[region].regId)
+
+        return profRegion
+    }
+
+    @action signup = async () => {
+        if (this.validation()) {
+            if (this.isProf) {
+                const profRegion = this.getRegionArr();
+                this.userData.regions = profRegion;
+                const res = await axios.post('http://localhost:5000/prof/signup', this.userData);
+                this.userId = res.data.userId
             }
-        console.log(SignupObject)
+            else {
+                const res = await axios.post('http://localhost:5000/client/signup', this.userData)
+                this.userId = res.data.userId
+            }
+            this.isFinishSignup = true
+        }
     }
-    @action radioHandler = (value) => {
-        value === "Technician" ? this.isProfessional = true : this.isProfessional = false
-        console.log("isProfessional" + ": " + this.isProfessional)
+
+    @action validation = () => {
+        return true
     }
 
     @action getCities = async () => {
-        let response = await axios.get('/cities')
+        const response = await axios.get('http://localhost:5000/general/cities')
         this.citiesList = response.data
     }
 
     @action getRegions = async () => {
-        let response = await axios.get('/regions')
+        let response = await axios.get('http://localhost:5000/general/regions')
         this.areasList = response.data
     }
 
-    @action signUp = () => {
-        let userData = {
-            isProfessional: this.isProfessional,
-            firstName: this.firstNameInput,
-            lastName: this.lastNameInput,
-            email: this.emailInput,
-            phone: this.phoneInput,
-            password: this.passwordInput,
-            address: this.addressInput,
-            city: this.cityInput
-        }
-
-        // if(this.isProfessional){
-        //     userData.areas = areasInput
-        //     userData.proffession = proffessionInput
-        // }
-
-        axios.post('/signup', userData)
+    @action getProffessions = async () => {
+        let response = await axios.get('http://localhost:5000/general/professionals')
+        this.proffessionsList = response.data
     }
+
 }
 
 
