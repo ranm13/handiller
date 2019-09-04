@@ -6,6 +6,8 @@ import NoSsr from '@material-ui/core/NoSsr';
 const useStyles = makeStyles(theme => ({
   root: {
     width: 250,
+    justifyContent: 'start',
+    alignContent: 'center'
   },
   input: {
     display: 'flex',
@@ -84,6 +86,7 @@ export default function IntegrationReactSelect(props) {
         <Select
           classes={classes}
           styles={selectStyles}
+          style={{ justifyItems: 'center',alignItems: 'center'}}
           inputId={props.inputId}
           TextFieldProps={{
             label: props.label,

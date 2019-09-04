@@ -7,12 +7,12 @@ import ClientHome from './components/Clients/ClientHome';
 import ClientNavBar from './components/Clients/ClientNavBar'
 import ProfNavBar from './components/Pros/ProfNavBar'
 import Logo from './components/General/Logo';
-import ClientSignUp from './components/Login/ClientSignUp';
 import ProfSettings from './components/Pros/ProfSettings';
 import ProfHome from './components/Pros/ProfHome';
 import Login from './components/Login/Login';
 import Root from './components/Login/Root';
 import Logout from './components/Login/Logout';
+import Signup from './components/Login/Signup';
 
 class App extends Component {
   render() {
@@ -29,7 +29,7 @@ class App extends Component {
           <Route exact path="/client/settings" component={ClientSettings}/>
           <Route exact path="/prof/home" component={ProfHome} />
           <Route exact path="/prof/settings" component={ProfSettings} />
-          <Route exact path="/signup" component={ClientSignUp} />
+          <Route exact path="/signup" component={Signup} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/logout" component={Logout} />
         </div>

@@ -56,7 +56,6 @@ router.get("/details/:clientId", async function (req, res) {
 })
 
 router.get("/searchProfs/:professionalName/:region", async function (req, res) {
-
     const profName = req.params.professionalName;
     const region = req.params.region;
 

@@ -20,7 +20,8 @@ export class LogInStore {
             const resUser = res.data;
 
             if(resUser.isValid){
-                this.user.isProf = resUser.isProf === 1
+                this.user.isProf = resUser.isProf === 1;
+                this.user.userId = resUser.userId;
                 this.user.isLogin = true;
             }         
         }

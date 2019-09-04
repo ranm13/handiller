@@ -12,7 +12,6 @@ class Root extends Component {
 
     login = () => {
         const user = this.props.logInStore.user;
-        console.log(user)
         if(user.isProf)
             return <Redirect push to="/prof/home"/>
         else
@@ -39,18 +38,3 @@ class Root extends Component {
 }
 
 export default Root;
-
-/**
- * <Grid container justify="center" alignItems="center" style={{ height: "90vh" }} spacing={6}>
-                    <Grid item>
-                        <Button variant="contained" color="primary" onClick={logInStore.enterToClient} to='/client/home' component={Link}>
-                            Client
-              </Button>
-                    </Grid>
-                    <Grid item>
-                        <Button variant="contained" color="secondary" onClick={logInStore.enterToProf} to='/prof/home' component={Link}>
-                            Professional
-              </Button>
-                    </Grid>
-                </Grid>
- */

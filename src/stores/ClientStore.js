@@ -38,7 +38,8 @@ export class ClientStore {
     }
 
     @action selectProfession = () => {
-        if (this.professionals.find(p => p==this.searchInput)) {
+        console.log(this.professionals)
+        if (this.professionals.find(p => p.profName===this.searchInput)) {
             this.chosenProfessional = this.searchInput
             this.searchPros()
         }
@@ -61,7 +62,6 @@ export class ClientStore {
     @action updatePersonalData = async () => {
         let id = this.personalData.id
         this.personalData = this.personalDataInputs
-        console.log(id, this.personalData)
         // await axios.put(`http://localhost:5000/general/settings/${id}?isClient=true`, this.personalDataInputs)
     }
 

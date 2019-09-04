@@ -7,10 +7,11 @@ import Requests from './Requests'
 
 @observer
 @inject("professionalStore")
+@inject('logInStore')
 class ProfHome extends Component {
 
     componentDidMount() {
-        this.props.professionalStore.getPersonalData(4)
+        this.props.professionalStore.getPersonalData(this.props.logInStore.user.userId)
       }
 
     render() {

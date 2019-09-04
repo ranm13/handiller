@@ -11,12 +11,14 @@ const sequelize = new Sequelize('mysql://root:@localhost/handiller_db')
 
 router.get("/professionals", async function (req, res) {
 
-    let query = `SELECT Profession FROM professions`
+    let query = `SELECT * FROM professions`
 
     let queryRes = await sequelize.query(query);
     queryRes = queryRes[0];
 
-    const professions = queryRes.map(p => p.Profession)
+    const professions = queryRes.map(p => {
+        return {profName: p.Profession, profId: p.id}
+        })
 
     res.send(professions)
 })
@@ -71,7 +73,7 @@ router.get("/cities", async function (req, res) {
     queryRes = queryRes[0];
 
     const cities = queryRes.map(c => {
-        return {name: c.name, cityNum: c.id}
+        return { name: c.name, cityNum: c.id }
     })
 
     console.log(cities);
@@ -80,12 +82,12 @@ router.get("/cities", async function (req, res) {
 })
 
 router.get("/regions", async function (req, res) {
-    let query = `SELECT name FROM areas`
+    let query = `SELECT * FROM areas`
 
     let queryRes = await sequelize.query(query);
     queryRes = queryRes[0];
 
-    const areas = queryRes.map(a => a.name)
+    const areas = queryRes.map(a => { return { name: a.name, id: a.id } })
 
     res.send(areas)
 })

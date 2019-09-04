@@ -5,12 +5,13 @@ import CustomInput from './CustomInput';
 import ResultsTable from './ResultsTable';
 
 @inject("clientStore")
+@inject('logInStore')
 @observer
 class ClientHome extends Component {
 
     componentDidMount = () => {
         this.props.clientStore.getProfessionalsList()
-        this.props.clientStore.getPersonalData(5)
+        this.props.clientStore.getPersonalData(this.props.logInStore.user.userId)
     }
 
     render() {

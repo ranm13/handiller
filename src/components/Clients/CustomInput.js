@@ -5,7 +5,6 @@ import SearchIcon from '@material-ui/icons/Search'
 
 @inject("clientStore")
 @observer
-
 class CustomInput extends Component {
 
     inputHandler = (e) => {
@@ -29,7 +28,7 @@ class CustomInput extends Component {
                 <spin>Pick A Profession: </spin>
                 <input list="search-input" name="profession" onChange={this.inputHandler} style={{ width: "25vw", fontFamily: `'Montserrat', sans-serif`, paddingLeft: "5px" }} onKeyDown = {this.selectProfessionEnter}/>
                 <datalist id="search-input" >
-                    {professions.map(p => <option>{p}</option>)}
+                    {professions.map(p => <option>{p.profName}</option>)}
                 </datalist>
                 <IconButton onClick={this.selectProfession} >
                     <SearchIcon />
