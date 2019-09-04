@@ -8,7 +8,7 @@ import Requests from './Requests'
 class ProfHome extends Component {
     render() {
         return (
-            <Grid container spacing={2} style={{marginTop: "1.5vh"}}>
+            <Grid container spacing={2} style={{margin: "1.5vh 0.1vw"}}>
                 <Grid item xs={9}>
                   <CalendarComp />
                 </Grid>
