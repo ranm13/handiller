@@ -25,7 +25,7 @@ class CustomInput extends Component {
     render() {
         let professions = this.props.clientStore.professionals
         return (
-            <Grid container style={{width: "100vw", margin: "1.5vh 0" }} justify="center" alignItems="center">
+            <Grid container style={{width: "100vw", opacity: "0.95"}} justify="center" alignItems="center">
             <Paper style={{ width: "50vw" }} justify="center" alignItems="center">
                 <Grid container style={{ height: "10vh" }} justify="center" alignItems="center">
                     <Grid item>

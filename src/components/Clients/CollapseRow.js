@@ -4,6 +4,8 @@ import moment from 'moment';
 import  Button  from '@material-ui/core/Button';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import { Paper, Modal, Grid } from '@material-ui/core';
+import PayPal from './Paypal';
 
 @inject("clientStore")
 
@@ -36,7 +38,21 @@ class CollapseRow extends Component {
                     <Button variant="contained" color="secondary" onClick={this.cancelAppointment}>
                         Cancel Appointment
                     </Button>
-                    : null }
+                    :text === "Completed"?    
+                    <div>
+                        <Button variant="contained" color="secondary" onClick={this.props.clientStore.openPayModal}>
+                            Pay
+                        </Button>
+                            <Modal open={ this.props.clientStore.paymentModal}>
+                                <Grid container justify="center" alignItems="center" style={{height: "100vh"}}>
+                                    <Paper>
+                                        <PayPal />    
+                                    </Paper>
+                                </Grid>
+                            </Modal>
+                    </div>                 
+
+                     :null }
                     </TableCell>
             </TableRow>
         )

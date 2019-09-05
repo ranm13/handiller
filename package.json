@@ -60,6 +60,7 @@
     "react-dev-utils": "^9.0.3",
     "react-dom": "^16.9.0",
     "react-iframe": "^1.8.0",
+    "react-paypal-button-v2": "^2.4.1",
     "react-router-dom": "^5.0.1",
     "react-select": "^3.0.4",
     "resolve": "1.12.0",
