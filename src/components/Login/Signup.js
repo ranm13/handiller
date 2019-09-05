@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Paper, Grid, Button, Typography } from '@material-ui/core'
 import { observer, inject } from 'mobx-react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import ClientSignUp from './ClientSignUp';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import ProfSignUp from './ProfSignUp';
 
+@inject("signUpStore", "logInStore")
 
-@inject("signUpStore")
-@inject("logInStore")
 @observer 
 class Signup extends Component {
 
@@ -40,14 +39,22 @@ class Signup extends Component {
 
     render() {
         console.log(this.props.signUpStore)
+        let signupStyle = {
+            // padding: "1.5vh 1vw 1vh 1vw",
+            height: "99vh",
+            margin: "0.3vh auto",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundImage: `url('https://www.korvia.com/wp-content/uploads/2015/11/korvia-image-background-tnkr-signup-2.jpg')`
+        }
         return (
-            <Grid container justify="center" alignItems="center">
+            <Grid container justify="center" alignItems="center" style={signupStyle}>
                 <Grid item >
                     <Grid container direction="column" justify="center" alignItems="center">
-                        <Typography variant="h4"> Welcome to Handiler</Typography>
-                        <Typography variant="h6">The best place to find a Technician !</Typography>
+                        {/* <Typography variant="h4"> Welcome to Handiler</Typography> */}
+                        {/* <Typography variant="h6">The best place to find a Technician !</Typography> */}
                     </Grid>
-                    <Paper elevation={4} style={{ margin: "2vh", padding: "5vh", width: "50vw" }}>
+                    <Paper elevation={4} style={{ margin: "2vh", padding: "5vh", width: "50vw", opacity: "0.95" }}>
                         <Grid container justify="center" direction="column" alignItems="center">
 
                             <Grid item>

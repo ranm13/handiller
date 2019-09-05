@@ -5,8 +5,8 @@ import  Button  from '@material-ui/core/Button';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
-
 @inject("clientStore")
+
 @observer
 class CollapseRow extends Component {
     cancelAppointment = () => {

@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react'
 import { Grid, TextField, Button } from '@material-ui/core';
 
-
-
 @inject('logInStore')
+
 @observer
 class Login extends Component {
 

@@ -3,21 +3,22 @@ import { Calendar, momentLocalizer } from 'react-big-calendar'
 import { observer, inject } from 'mobx-react'
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "moment";
-import { Modal, Grid, Paper, Button } from "@material-ui/core";
+import { Modal, Grid, Paper } from "@material-ui/core";
+import CalendarModal from './CalendarModal';
 
 @inject( "professionalStore")
+
 @observer
 class CalendarComp extends Component { 
-  async componentDidMount() {
-    await this.props.professionalStore.getPersonalData(2)
+   componentDidMount() {
     setTimeout(() => {
       const todayButton = document.querySelector('.rbc-btn-group').firstChild;
       todayButton.click()
-    }, 100) 
+    }, 500) 
   }
 
   onSelectEvent = (event) => {
-    console.log(event)
+    this.props.professionalStore.event = event
     this.props.professionalStore.handleModalOpening()
   }
 
@@ -38,8 +39,7 @@ class CalendarComp extends Component {
           <Grid container justify="center" alignItems="center" style={{height: "100vh"}}>
             <Grid item>
               <Paper  style={{ width: 400}}>
-                hi
-                <Button onClick={professionalStore.handleModalOpening}>X</Button>
+                  <CalendarModal event={this.props.professionalStore.event}/>
               </Paper>
             </Grid>
           </Grid>

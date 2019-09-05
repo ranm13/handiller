@@ -7,6 +7,7 @@ import CancelIcon from '@material-ui/icons/Cancel';
 const moment = require('moment')
 
 @inject('clientStore')
+
 @observer
 class ClientPopUp extends Component {
   constructor(props) {

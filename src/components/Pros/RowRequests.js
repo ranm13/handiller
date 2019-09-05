@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import { Paper, Button, Typography, Grid } from '@material-ui/core'
-
+import { Button, Typography, Grid } from '@material-ui/core'
 import moment from "moment"
 
 @inject('professionalStore')
@@ -29,7 +28,7 @@ class RowRequests extends Component {
         let appointmentData = this.props.appointmentData
         let rowRequestStyle = {
             padding: "8vh 1vw 1vh 1vw",
-            width: "12vw",
+            width: "15vw",
             minHeight: "15vh",
             backgroundPosition: "center",
             backgroundSize: "cover",
@@ -51,6 +50,7 @@ class RowRequests extends Component {
                 <Grid key={this.props.key} style={rowRequestStyle}>
                     <Typography style={typographyStyle} variant="h5">{appointmentData.clientName}</Typography>
                     <Typography style={typographyStyle} >{appointmentData.title}</Typography>
+                    <Typography style={typographyStyle} >{appointmentData.clientAddress}, {appointmentData.clientCity}</Typography>
                     <Typography style={typographyStyle}>{moment(appointmentData.startDate).format('L')}</Typography>
                     <Typography style={typographyStyle}>{moment(appointmentData.startDate).format('LT')}-{moment(appointmentData.endDate).format('LT')}</Typography>
                     <Grid container justify="center" alignItems="center">

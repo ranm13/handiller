@@ -3,10 +3,10 @@ import { observer, inject } from 'mobx-react'
 import Button from '@material-ui/core/Button';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-
 import ClientPopUp from './ClientPopUp'
 
 @inject("clientStore")
+
 @observer
 
 class RowResults extends Component {
