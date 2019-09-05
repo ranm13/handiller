@@ -7,8 +7,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-
 @inject("clientStore")
+
 @observer
 
 class ResultsTable extends Component {

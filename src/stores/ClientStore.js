@@ -63,6 +63,7 @@ export class ClientStore {
     @action updatePersonalData = async () => {
         let id = this.personalData.id
         this.personalData = this.personalDataInputs
+        console.log(id)
         // await axios.put(`http://localhost:5000/general/settings/${id}?isClient=true`, this.personalDataInputs)
     }
 

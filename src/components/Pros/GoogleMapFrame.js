@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
-import { Iframe } from 'react-iframe';
+import  Iframe  from 'react-iframe';
 
 class GoogleMapFrame extends Component {
     render() {
         const APIKEY = "AIzaSyDqdsntoF7hsuKcC24uY7RsDGSeALpQnHM"
         return (
-            <Iframe url={`https://www.google.com/maps/embed/v1/place?q=${this.props.location}&key=${APIKEY}`}
-            width="450px"
-            height="450px"
+            <Iframe url={`https://www.google.com/maps/embed/v1/place?q=${this.props.adress}&key=${APIKEY}`}
+            width="390px"
+            height="350px"
             display="initial"
             position="relative"/>)
     }

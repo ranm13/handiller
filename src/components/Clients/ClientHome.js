@@ -4,8 +4,8 @@ import Requests from './Requests';
 import CustomInput from './CustomInput';
 import ResultsTable from './ResultsTable';
 
-@inject("clientStore")
-@inject('logInStore')
+@inject("clientStore" ,'logInStore')
+
 @observer
 class ClientHome extends Component {
 

@@ -5,6 +5,7 @@ const axios = require('axios')
 export class ProfessionalStore {
     @observable personalData
     @observable allRequests = []
+    @observable event = {}
     @observable personalDataInputs = {}
     @observable isModalOpen = false
 
@@ -21,6 +22,7 @@ export class ProfessionalStore {
         this.personalData = response.data
         this.personalDataInputs = this.personalData
         this.getRequests()
+        return "done"
     }
     // change appointment request (CANCEL or APPROVE) sent by the client
     @action changeStatusRequest = async (appId, data) => {

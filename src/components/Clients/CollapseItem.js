@@ -17,6 +17,7 @@ import Typography from '@material-ui/core/Typography';
 
 
 @inject("historyStore", "clientStore")
+
 @observer
 class CollapseItem extends Component {
 

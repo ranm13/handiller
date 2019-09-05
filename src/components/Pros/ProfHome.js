@@ -4,10 +4,9 @@ import { Grid } from '@material-ui/core'
 import CalendarComp from './CalendarComp'
 import Requests from './Requests'
 
+@inject("professionalStore", 'logInStore')
 
 @observer
-@inject("professionalStore")
-@inject('logInStore')
 class ProfHome extends Component {
 
     componentDidMount() {

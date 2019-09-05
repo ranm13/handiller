@@ -4,6 +4,7 @@ import { observer, inject } from 'mobx-react'
 import CustomInputList from '../utils/CustomInputList'
 
 @inject("signUpStore")
+
 @observer
 class ClientSignUp extends Component {
 

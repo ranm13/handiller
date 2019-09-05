@@ -3,8 +3,8 @@ import { Grid, TextField, Typography, FormGroup, FormControlLabel, Checkbox } fr
 import { observer, inject } from 'mobx-react'
 import CustomInputList from '../utils/CustomInputList'
 
-
 @inject("signUpStore")
+
 @observer
 class ProfSignUp extends Component {
 

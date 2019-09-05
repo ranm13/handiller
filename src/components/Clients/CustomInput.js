@@ -4,6 +4,7 @@ import { IconButton, Paper, Grid, Typography} from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
 
 @inject("clientStore")
+
 @observer
 class CustomInput extends Component {
 
