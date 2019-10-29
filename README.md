@@ -1,7 +1,25 @@
-# Handiller
+## Handiller
 
 ## **Description**
 Application that has users of 2 types: supplier & customer, that can coordinate meeting between them. The customer can search supplier by category.
+
+###### Landing Page screen
+![alt text](/images/Landing_page.png "Landing Page screenshot")
+
+###### Signup Page screen
+![alt text](/images/signup_page.png "Signup Page screenshot")
+
+###### Client Search Page screen
+![alt text](/images/client_search_page.png "Client Search Page screenshot")
+
+###### Client History Page screen
+![alt text](/images/client_history_page.png "Client History Page screenshot")
+
+###### Tech Calendar Page screen
+![alt text](/images/Tech_calendar.png "Tech Calendar Page screenshot")
+
+###### Tech Setting Page screen
+![alt text](/images/Tech_settings.png "Tech Setting Page screenshot")
 
 ## **Technologies**
 *	React
@@ -9,12 +27,15 @@ Application that has users of 2 types: supplier & customer, that can coordinate 
 *	Node.js
 *	Express
 *	MySQL
+*   npm packages
 
-## **Tabels**
-
-* EMPTY
-
-## **Routes**
+### features:
+- Have two types of users that can interact and coordinate a meeting
+- Search bar for clients to search some kind of technicians. (results are filtered automatically by the address of the client)
+- Calendar in the technicians page in which approved meetings appear automatically 
+- Sign up page for users 
+- Setting page by which users can change their data
+- History page on the clients interface with data about previous requests
 
 ### *GET Routes*
 * Get: '/login/:id' 
