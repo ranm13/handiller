@@ -11,6 +11,7 @@ export class ClientStore {
     @observable searchInput
     @observable chosenProfessional
     @observable searchResults
+    @observable paymentModal = false
     
     @action getProfessionalsList = async () => {
         const res = await axios.get('http://localhost:5000/general/professionals')
@@ -67,4 +68,7 @@ export class ClientStore {
         // await axios.put(`http://localhost:5000/general/settings/${id}?isClient=true`, this.personalDataInputs)
     }
 
+    @action openPayModal = () => {
+        this.paymentModal = !this.paymentModal
+    }
 }
