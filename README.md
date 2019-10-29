@@ -1,4 +1,4 @@
-## Handiller
+# Handiller
 
 ## **Description**
 Application that has users of 2 types: supplier & customer, that can coordinate meeting between them. The customer can search supplier by category.
